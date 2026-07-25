@@ -11,7 +11,7 @@
 
 ## 当前覆盖
 
-- 首页登录态旧组件：`.wrapper.wrapped.lfe-body.header-layout.tiny`、`main.lfe-body.mobile-body`、`.lg-index-content`、`.lg-article`、`#lg-slider`、`.am-panel.lg-index-contest`、`.am-comment-bd`、`.highcharts-root`。
+- 首页登录态旧组件：`.wrapper.wrapped.lfe-body.header-layout.tiny`、`.header-layout > .background`、`main.lfe-body.mobile-body`、`.lg-index-content`、`.lg-article`、`#lg-slider`、`.am-panel.lg-index-contest`、`.am-comment-bd`、`.highcharts-root`。
 - 题目页登录态组件：`.top-bar`、`.sidebar.lside`、`.user-nav.rside`、`.columba-content-wrap.main-content`、`.l-card.header-card`、`.l-card.problem`、`.l-card::before`、`.sidebar-container.reverse.layout`、`.lfe-h2`、`.lfe-h3`。
 - 跨页面组件：表单、按钮、表格、标签页、弹窗、Markdown、代码块、评测状态色和滚动条。
 
