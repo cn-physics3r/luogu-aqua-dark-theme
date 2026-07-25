@@ -12,7 +12,7 @@
 ## 当前覆盖
 
 - 首页登录态旧组件：`.wrapper.wrapped.lfe-body.header-layout.tiny`、`.header-layout > .background`、`main.lfe-body.mobile-body`、`.lg-index-content`、`.lg-article`、`#lg-slider`、`.am-panel.lg-index-contest`、`.am-comment-bd`、`.highcharts-root`。
-- 题目页登录态组件：`.top-bar`、`.sidebar.lside`、`.user-nav.rside`、`.theme-page.theme-frosted`、`.theme-page.theme-frosted::before`、`.columba-content-wrap.main-content`、`.l-card.header-card`、`.l-card.problem`、`.l-card::before`、`.sidebar-container.reverse.layout`、`.lfe-h2`、`.lfe-h3`。
+- 题目列表/题目页登录态组件：`.filter-section .text.lform-size-middle`、`.filter-section .refined-input.search-text`、`.bottom-wrap.float`、`.top-bar`、`.sidebar.lside`、`.user-nav.rside`、`.theme-page.theme-frosted`、`.theme-page.theme-frosted::before`、`.columba-content-wrap.main-content`、`.l-card.header-card`、`.l-card.problem`、`.l-card::before`、`.sidebar-container.reverse.layout`、`.lfe-h2`、`.lfe-h3`。
 - 跨页面组件：表单、按钮、表格、标签页、弹窗、Markdown、代码块、评测状态色和滚动条。
 
 这些选择器是在 2026-07-25 通过已登录浏览器核实洛谷主页和 `P1000` 题目页后写入的；同时确认了登录态顶部栏、左右侧栏、首页 Highcharts 图表、评论流，以及题目卡片的白色 `::before` 覆盖层。题解、评测记录和个人页仍未把未经页面确认的专属类名写进主题。

@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Codex Dark
 @namespace      github.com/physics3r/luogu-codex-dark
-@version        0.2.5
+@version        0.2.6
 @description    Codex-inspired dark theme for Luogu: charcoal surfaces, cool blue-cyan accents, and readable coding states.
 @author         Physics3r
 @homepageURL    https://www.luogu.com.cn/
@@ -250,6 +250,38 @@
   .theme-page.theme-frosted::before {
     background: var(--lc-canvas) !important;
     background-image: none !important;
+  }
+
+  /* Problem-list-only controls verified on /problem/list. */
+  .filter-section .text.lform-size-middle,
+  .filter-section .refined-input.search-text,
+  .bottom-wrap.float {
+    background: var(--lc-surface) !important;
+    border-color: var(--lc-border) !important;
+    color: var(--lc-text-secondary) !important;
+    box-shadow: none !important;
+  }
+
+  .filter-section .text.lform-size-middle:hover,
+  .filter-section .refined-input.search-text:focus-within {
+    background: var(--lc-surface-raised) !important;
+    border-color: var(--lc-accent) !important;
+  }
+
+  .filter-section .text.lform-size-middle input,
+  .filter-section .refined-input.search-text input,
+  .filter-section .text.lform-size-middle button,
+  .filter-section .refined-input.search-text button {
+    background: transparent !important;
+    border-color: transparent !important;
+    color: var(--lc-text) !important;
+  }
+
+  .bottom-wrap.float .toolbar,
+  .bottom-wrap.float .toolbar-left,
+  .bottom-wrap.float .page-bar {
+    background: transparent !important;
+    color: var(--lc-text-secondary) !important;
   }
 
   /* Verified homepage surfaces: .lg-index-content, .lg-article, #lg-slider, .am-panel. */
