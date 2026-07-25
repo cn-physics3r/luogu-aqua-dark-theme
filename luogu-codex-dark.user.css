@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Codex Dark
 @namespace      github.com/physics3r/luogu-codex-dark
-@version        0.1.0
+@version        0.2.0
 @description    Codex-inspired dark theme for Luogu: charcoal surfaces, cool blue-cyan accents, and readable coding states.
 @author         Physics3r
 @homepageURL    https://www.luogu.com.cn/
@@ -140,11 +140,94 @@
     color: var(--lc-text) !important;
   }
 
+  /* Logged-in shell verified on the current homepage and problem page. */
+  .top-bar,
+  .wrapper.wrapped.lfe-body.header-layout.tiny {
+    background: var(--lc-header) !important;
+    border-color: var(--lc-border) !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  .top-bar {
+    box-shadow: 0 1px 0 var(--lc-border) !important;
+  }
+
+  .top-bar .left,
+  .top-bar .right,
+  .top-bar .breadcrumb,
+  .top-bar .user-nav,
+  .top-bar .nav-search,
+  .top-bar .search-wrap,
+  .wrapper.wrapped.lfe-body.header-layout.tiny .container {
+    color: var(--lc-text-secondary) !important;
+  }
+
+  .top-bar a,
+  .top-bar .breadcrumb a,
+  .top-bar .user-nav a,
+  .top-bar .user-nav .link {
+    color: var(--lc-accent) !important;
+  }
+
+  .top-bar a:hover,
+  .top-bar .user-nav a:hover,
+  .top-bar .user-nav .link:hover {
+    background: var(--lc-surface-hover) !important;
+    color: var(--lc-accent-hover) !important;
+  }
+
+  .header-layout .center {
+    background: var(--lc-surface-raised) !important;
+    border-color: var(--lc-border) !important;
+    color: var(--lc-text-secondary) !important;
+    box-shadow: var(--lc-shadow) !important;
+  }
+
+  .sidebar.lside,
+  .user-nav.rside {
+    background: var(--lc-sidebar) !important;
+    border-color: var(--lc-border) !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  .sidebar.lside li,
+  .sidebar.lside .nav-group,
+  .user-nav.rside li,
+  .user-nav.rside .nav-group,
+  .user-nav.rside .title,
+  .user-nav.rside .username {
+    color: var(--lc-text-secondary) !important;
+  }
+
+  .sidebar.lside a,
+  .sidebar.lside .icon,
+  .sidebar.lside .title,
+  .user-nav.rside a,
+  .user-nav.rside .icon,
+  .user-nav.rside .title {
+    color: var(--lc-accent) !important;
+  }
+
+  .sidebar.lside a:hover,
+  .sidebar.lside li:hover,
+  .user-nav.rside a:hover,
+  .user-nav.rside li:hover {
+    background: var(--lc-surface-hover) !important;
+    color: var(--lc-text) !important;
+  }
+
   .search-wrap input,
   nav.user-nav input {
     background: var(--lc-surface) !important;
     border-color: var(--lc-border) !important;
     color: var(--lc-text) !important;
+  }
+
+  /* The authenticated homepage still mounts its legacy app under #app-old. */
+  #app-old,
+  main.lfe-body.mobile-body {
+    background: var(--lc-canvas) !important;
+    color: var(--lc-text-secondary) !important;
   }
 
   /* Verified homepage surfaces: .lg-index-content, .lg-article, #lg-slider, .am-panel. */
@@ -228,6 +311,55 @@
     background: var(--lc-surface-raised) !important;
   }
 
+  .am-comment,
+  .am-comment-main,
+  .am-comment-bd,
+  #feed .am-comment-primary {
+    background: var(--lc-surface) !important;
+    border-color: var(--lc-border) !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  .am-comment-bd .am-comment-meta,
+  .am-comment-bd p,
+  .am-comment-bd blockquote {
+    color: var(--lc-text-secondary) !important;
+  }
+
+  /* Highcharts writes SVG presentation attributes, so override fill/stroke explicitly. */
+  svg.highcharts-root,
+  .highcharts-root {
+    color: var(--lc-text-secondary) !important;
+  }
+
+  .highcharts-root text,
+  .highcharts-root tspan {
+    fill: var(--lc-text-secondary) !important;
+  }
+
+  .highcharts-root .highcharts-title {
+    fill: var(--lc-text) !important;
+  }
+
+  .highcharts-root .highcharts-subtitle {
+    fill: var(--lc-text-muted) !important;
+  }
+
+  .highcharts-root .highcharts-grid-line,
+  .highcharts-root .highcharts-plot-border {
+    stroke: var(--lc-border) !important;
+  }
+
+  .highcharts-root .highcharts-axis-line,
+  .highcharts-root .highcharts-tick {
+    stroke: var(--lc-border-strong) !important;
+  }
+
+  .highcharts-root .highcharts-label-box {
+    fill: var(--lc-surface-raised) !important;
+    stroke: var(--lc-accent) !important;
+  }
+
   /* New problem-page components verified on /problem/P5318. */
   .columba-content-wrap,
   .columba-content-wrap.main-content,
@@ -248,6 +380,15 @@
   }
 
   .l-card.header-card {
+    background: var(--lc-surface-raised) !important;
+  }
+
+  /* The current card system paints a translucent white layer with ::before. */
+  .l-card::before {
+    background: var(--lc-surface) !important;
+  }
+
+  .l-card.header-card::before {
     background: var(--lc-surface-raised) !important;
   }
 
@@ -280,6 +421,15 @@
   .l-card.problem dt,
   .l-card.problem dd {
     color: var(--lc-text-secondary) !important;
+  }
+
+  .l-card.header-card .field,
+  .l-card.header-card .stat-text {
+    color: var(--lc-text-secondary) !important;
+  }
+
+  .l-card.header-card .stat-text.value {
+    color: var(--lc-text) !important;
   }
 
   .l-card.problem hr,

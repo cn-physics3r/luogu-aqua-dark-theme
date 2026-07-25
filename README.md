@@ -11,11 +11,11 @@
 
 ## 当前覆盖
 
-- 首页旧组件：`nav.lfe-body`、`nav.user-nav`、`.lg-index-content`、`.lg-article`、`#lg-slider`、`.am-panel.lg-index-contest`。
-- 题目页新组件：`#app.lfe-body`、`.columba-content-wrap.main-content`、`.l-card.header-card`、`.l-card.problem`、`.sidebar-container.reverse.layout`、`.lfe-h2`、`.lfe-h3`。
+- 首页登录态旧组件：`.wrapper.wrapped.lfe-body.header-layout.tiny`、`main.lfe-body.mobile-body`、`.lg-index-content`、`.lg-article`、`#lg-slider`、`.am-panel.lg-index-contest`、`.am-comment-bd`、`.highcharts-root`。
+- 题目页登录态组件：`.top-bar`、`.sidebar.lside`、`.user-nav.rside`、`.columba-content-wrap.main-content`、`.l-card.header-card`、`.l-card.problem`、`.l-card::before`、`.sidebar-container.reverse.layout`、`.lfe-h2`、`.lfe-h3`。
 - 跨页面组件：表单、按钮、表格、标签页、弹窗、Markdown、代码块、评测状态色和滚动条。
 
-这些选择器是在 2026-07-25 通过浏览器核实洛谷主页和 `P5318` 题目页后写入的。题解、评测记录和个人页在当前匿名会话中会跳转到登录页，因此没有把未经页面确认的专属类名写进主题。
+这些选择器是在 2026-07-25 通过已登录浏览器核实洛谷主页和 `P1000` 题目页后写入的；同时确认了登录态顶部栏、左右侧栏、首页 Highcharts 图表、评论流，以及题目卡片的白色 `::before` 覆盖层。题解、评测记录和个人页仍未把未经页面确认的专属类名写进主题。
 
 ## 配色令牌
 
@@ -36,6 +36,6 @@
 ## 设计约束
 
 - 纯 CSS，无 JavaScript、外部字体或外部图片资源。
-- 不对洛谷赛事横幅、头像和其他图片施加滤镜。
+- 不对洛谷赛事横幅、头像和其他图片施加滤镜；题目页装饰背景也不修改，只移除卡片自身的白色覆盖层。
 - 不改变页面信息架构和主要布局，只调整表面颜色、层级、边框和交互状态。
 - 后续若要继续增强，优先在已登录状态下补充题解、评测记录和个人主页的专属组件细节。
