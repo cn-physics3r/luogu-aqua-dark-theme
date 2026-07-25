@@ -1,13 +1,14 @@
 /* ==UserStyle==
 @name           Luogu Codex Dark
 @namespace      github.com/physics3r/luogu-codex-dark
-@version        0.2.8
+@version        0.2.9
 @description    Codex-inspired dark theme for Luogu: charcoal surfaces, cool blue-cyan accents, and readable coding states.
 @author         Physics3r
 @homepageURL    https://www.luogu.com.cn/
 ==/UserStyle== */
 
 @-moz-document domain("luogu.com.cn") {
+  /* 01. Theme tokens */
   :root {
     color-scheme: dark;
 
@@ -28,18 +29,44 @@
     --lc-accent: #63b7d9;
     --lc-accent-hover: #8bd1e8;
     --lc-accent-soft: rgba(99, 183, 217, 0.16);
+    --lc-accent-border: rgba(99, 183, 217, 0.42);
     --lc-success: #79ba91;
     --lc-success-soft: rgba(121, 186, 145, 0.16);
+    --lc-success-bg: #35664c;
+    --lc-success-border: #5e9f7a;
+    --lc-success-soft-border: rgba(121, 186, 145, 0.42);
+    --lc-success-text: #a9e0b9;
+    --lc-success-on: #eafff1;
     --lc-warning: #d4ae68;
     --lc-warning-soft: rgba(212, 174, 104, 0.16);
+    --lc-warning-border: rgba(212, 174, 104, 0.42);
+    --lc-warning-text: #efd18e;
     --lc-danger: #db7f85;
     --lc-danger-soft: rgba(219, 127, 133, 0.16);
+    --lc-danger-bg: #713b42;
+    --lc-danger-border: #bd6871;
+    --lc-danger-soft-border: rgba(219, 127, 133, 0.42);
+    --lc-danger-text: #f2aeb2;
+    --lc-danger-on: #fff0f1;
 
     --lc-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
     --lc-shadow-small: 0 2px 10px rgba(0, 0, 0, 0.18);
+    --lc-header-shadow: 0 2px 14px rgba(0, 0, 0, 0.28);
+    --lc-focus-ring: 0 0 0 3px var(--lc-accent-soft);
+    --lc-selection: rgba(99, 183, 217, 0.32);
+    --lc-overlay: rgba(0, 0, 0, 0.72);
+    --lc-scrollbar: #3a4149;
+    --lc-scrollbar-hover: #515b66;
+    --lc-control: #1b1e22;
+    --lc-code: #151719;
+    --lc-code-text: #d7dde5;
+    --lc-text-on-accent: #ffffff;
+    --lc-primary-bg: #347b9e;
+    --lc-primary-border: #4d9fc3;
     --lc-radius: 8px;
   }
 
+  /* 02. Base */
   html {
     background: var(--lc-canvas) !important;
     color-scheme: dark;
@@ -77,8 +104,8 @@
   }
 
   ::selection {
-    background: rgba(99, 183, 217, 0.32);
-    color: #ffffff;
+    background: var(--lc-selection);
+    color: var(--lc-text-on-accent);
   }
 
   ::-webkit-scrollbar {
@@ -91,15 +118,16 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #3a4149;
+    background: var(--lc-scrollbar);
     border: 2px solid var(--lc-canvas);
     border-radius: 999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #515b66;
+    background: var(--lc-scrollbar-hover);
   }
 
+  /* 03. Navigation and page shell */
   /* Verified navigation surfaces: nav.lfe-body and nav.user-nav. */
   nav.lfe-body {
     background: var(--lc-sidebar) !important;
@@ -143,24 +171,24 @@
   /* Logged-in shell verified on the current homepage and problem page. */
   .top-bar,
   .wrapper.wrapped.lfe-body.header-layout.tiny {
-    background-color: #20252b !important;
+    background-color: var(--lc-header) !important;
     background-image: none !important;
     border-color: var(--lc-border-strong) !important;
     color: var(--lc-text-secondary) !important;
   }
 
   .top-bar {
-    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.28) !important;
+    box-shadow: var(--lc-header-shadow) !important;
   }
 
   .wrapper.wrapped.lfe-body.header-layout.tiny {
-    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.28) !important;
+    box-shadow: var(--lc-header-shadow) !important;
     z-index: 10;
   }
 
   /* The homepage has its own gradient layer above the legacy header. */
   .header-layout > .background {
-    background-color: #20252b !important;
+    background-color: var(--lc-header) !important;
     background-image: none !important;
   }
 
@@ -242,14 +270,13 @@
     color: var(--lc-text-secondary) !important;
   }
 
-  /* Problem pages use a frosted image layer that the homepage does not have. */
+  /* Keep the problem-page decorative image; card overlays are handled below. */
   .theme-page.theme-frosted {
-    background: var(--lc-canvas) !important;
+    background-color: var(--lc-canvas) !important;
   }
 
   .theme-page.theme-frosted::before {
-    background: var(--lc-canvas) !important;
-    background-image: none !important;
+    background-color: var(--lc-canvas) !important;
   }
 
   /* Problem-list-only controls verified on /problem/list. */
@@ -284,23 +311,24 @@
     color: var(--lc-text-secondary) !important;
   }
 
-  .columba-content-wrap.main-content > .sidebar-container.layout > .main > .l-card .title {
+  .columba-content-wrap.main-content .sidebar-container.layout .main .l-card .title {
     color: var(--lc-text-secondary) !important;
   }
 
-  .columba-content-wrap.main-content > .sidebar-container.layout > .main > .l-card .progress-frame {
+  .columba-content-wrap.main-content .sidebar-container.layout .main .l-card .progress-frame {
     background: var(--lc-border) !important;
     border: 1px solid var(--lc-border-strong) !important;
   }
 
-  .columba-content-wrap.main-content > .sidebar-container.layout > .main > .l-card .progress-frame .square {
+  .columba-content-wrap.main-content .sidebar-container.layout .main .l-card .progress-frame .square {
     background: var(--lc-accent) !important;
   }
 
-  .columba-content-wrap.main-content > .sidebar-container.layout > .main > .l-card .row {
+  .columba-content-wrap.main-content .sidebar-container.layout .main .l-card .row {
     border-bottom: 1px solid var(--lc-border) !important;
   }
 
+  /* 04. Homepage */
   /* Verified homepage surfaces: .lg-index-content, .lg-article, #lg-slider, .am-panel. */
   .lg-index-content {
     background: transparent !important;
@@ -431,6 +459,7 @@
     stroke: var(--lc-accent) !important;
   }
 
+  /* 05. Problem page */
   /* New problem-page components verified on /problem/P5318. */
   .columba-content-wrap,
   .columba-content-wrap.main-content,
@@ -509,53 +538,111 @@
     border-color: var(--lc-border) !important;
   }
 
-  /* Forms and controls shared by search, problem actions, records, and auth. */
-  input:not([type="checkbox"]):not([type="radio"]),
-  textarea,
-  select,
-  .am-form-field,
-  .form-control,
-  .el-input__inner,
-  .el-textarea__inner {
-    background: #1b1e22 !important;
+  /* 06. Shared controls and components */
+  /* Scope native controls to known Luogu application roots. */
+  :is(
+    #app,
+    #app-old,
+    .columba-content-wrap,
+    nav,
+    .el-overlay,
+    .modal-backdrop,
+    .modal-content,
+    .el-dialog,
+    .el-message-box
+  ) :where(
+    input:not([type="checkbox"]):not([type="radio"]),
+    textarea,
+    select,
+    .am-form-field,
+    .form-control,
+    .el-input__inner,
+    .el-textarea__inner
+  ) {
+    background: var(--lc-control) !important;
     border: 1px solid var(--lc-border-strong) !important;
     border-radius: 6px !important;
     color: var(--lc-text) !important;
     box-shadow: none !important;
   }
 
-  input:not([type="checkbox"]):not([type="radio"]):focus,
-  textarea:focus,
-  select:focus,
-  .am-form-field:focus,
-  .form-control:focus,
-  .el-input__inner:focus,
-  .el-textarea__inner:focus {
+  :is(
+    #app,
+    #app-old,
+    .columba-content-wrap,
+    nav,
+    .el-overlay,
+    .modal-backdrop,
+    .modal-content,
+    .el-dialog,
+    .el-message-box
+  ) :where(
+    input:not([type="checkbox"]):not([type="radio"]):focus,
+    textarea:focus,
+    select:focus,
+    .am-form-field:focus,
+    .form-control:focus,
+    .el-input__inner:focus,
+    .el-textarea__inner:focus
+  ) {
     border-color: var(--lc-accent) !important;
-    box-shadow: 0 0 0 3px var(--lc-accent-soft) !important;
+    box-shadow: var(--lc-focus-ring) !important;
     outline: none !important;
   }
 
-  input::placeholder,
-  textarea::placeholder,
-  .el-input__inner::placeholder,
-  .el-textarea__inner::placeholder {
+  :is(
+    #app,
+    #app-old,
+    .columba-content-wrap,
+    nav,
+    .el-overlay,
+    .modal-backdrop,
+    .modal-content,
+    .el-dialog,
+    .el-message-box
+  ) :where(
+    input::placeholder,
+    textarea::placeholder,
+    .el-input__inner::placeholder,
+    .el-textarea__inner::placeholder
+  ) {
     color: var(--lc-text-faint) !important;
   }
 
-  option,
-  optgroup {
+  :is(
+    #app,
+    #app-old,
+    .columba-content-wrap,
+    nav,
+    .el-overlay,
+    .modal-backdrop,
+    .modal-content,
+    .el-dialog,
+    .el-message-box
+  ) :where(option, optgroup) {
     background: var(--lc-surface) !important;
     color: var(--lc-text) !important;
   }
 
-  button,
-  input[type="button"],
-  input[type="submit"],
-  input[type="reset"],
-  .am-btn,
-  .btn,
-  .el-button {
+  :is(
+    #app,
+    #app-old,
+    .columba-content-wrap,
+    nav,
+    .el-overlay,
+    .modal-backdrop,
+    .modal-content,
+    .el-dialog,
+    .el-message-box
+  ) :where(
+    button,
+    input[type="button"],
+    input[type="submit"],
+    input[type="reset"],
+    .am-btn,
+    .btn,
+    .el-button
+  ) {
     background: var(--lc-surface-raised) !important;
     border: 1px solid var(--lc-border-strong) !important;
     border-radius: 6px !important;
@@ -563,77 +650,133 @@
     box-shadow: none !important;
   }
 
-  button:hover,
-  input[type="button"]:hover,
-  input[type="submit"]:hover,
-  input[type="reset"]:hover,
-  .am-btn:hover,
-  .btn:hover,
-  .el-button:hover {
+  :is(
+    #app,
+    #app-old,
+    .columba-content-wrap,
+    nav,
+    .el-overlay,
+    .modal-backdrop,
+    .modal-content,
+    .el-dialog,
+    .el-message-box
+  ) :where(
+    button:hover,
+    input[type="button"]:hover,
+    input[type="submit"]:hover,
+    input[type="reset"]:hover,
+    .am-btn:hover,
+    .btn:hover,
+    .el-button:hover
+  ) {
     background: var(--lc-surface-hover) !important;
     border-color: var(--lc-accent) !important;
-    color: #ffffff !important;
+    color: var(--lc-text-on-accent) !important;
   }
 
-  .am-btn-primary,
-  .btn-primary,
-  .el-button--primary,
-  button.primary,
-  .button.primary {
-    background: #347b9e !important;
-    border-color: #4d9fc3 !important;
-    color: #ffffff !important;
+  :is(
+    #app,
+    #app-old,
+    .columba-content-wrap,
+    nav,
+    .el-overlay,
+    .modal-backdrop,
+    .modal-content,
+    .el-dialog,
+    .el-message-box
+  ) :where(
+    .am-btn-primary,
+    .btn-primary,
+    .el-button--primary,
+    button.primary,
+    .button.primary
+  ) {
+    background: var(--lc-primary-bg) !important;
+    border-color: var(--lc-primary-border) !important;
+    color: var(--lc-text-on-accent) !important;
   }
 
-  .am-btn-success,
-  .btn-success,
-  .el-button--success,
-  button.success,
-  .button.success {
-    background: #35664c !important;
-    border-color: #5e9f7a !important;
-    color: #eafff1 !important;
+  :is(
+    #app,
+    #app-old,
+    .columba-content-wrap,
+    nav,
+    .el-overlay,
+    .modal-backdrop,
+    .modal-content,
+    .el-dialog,
+    .el-message-box
+  ) :where(
+    .am-btn-success,
+    .btn-success,
+    .el-button--success,
+    button.success,
+    .button.success
+  ) {
+    background: var(--lc-success-bg) !important;
+    border-color: var(--lc-success-border) !important;
+    color: var(--lc-success-on) !important;
   }
 
-  .am-btn-danger,
-  .btn-danger,
-  .el-button--danger,
-  button.danger,
-  .button.danger {
-    background: #713b42 !important;
-    border-color: #bd6871 !important;
-    color: #fff0f1 !important;
+  :is(
+    #app,
+    #app-old,
+    .columba-content-wrap,
+    nav,
+    .el-overlay,
+    .modal-backdrop,
+    .modal-content,
+    .el-dialog,
+    .el-message-box
+  ) :where(
+    .am-btn-danger,
+    .btn-danger,
+    .el-button--danger,
+    button.danger,
+    .button.danger
+  ) {
+    background: var(--lc-danger-bg) !important;
+    border-color: var(--lc-danger-border) !important;
+    color: var(--lc-danger-on) !important;
   }
 
   /* Tables, lists, tabs, menus, dialogs, and popovers. */
-  table,
-  .table,
-  .el-table,
-  .el-table__body-wrapper,
-  .el-table__header-wrapper {
+  :is(#app, #app-old, .columba-content-wrap, nav) :where(
+    table,
+    .table,
+    .el-table,
+    .el-table__body-wrapper,
+    .el-table__header-wrapper
+  ) {
     background: var(--lc-surface) !important;
     color: var(--lc-text-secondary) !important;
   }
 
-  th,
-  td,
-  .table th,
-  .table td,
-  .el-table th,
-  .el-table td {
+  :is(#app, #app-old, .columba-content-wrap, nav) :where(
+    th,
+    td,
+    .table th,
+    .table td,
+    .el-table th,
+    .el-table td
+  ) {
     border-color: var(--lc-border) !important;
   }
 
-  thead,
-  .el-table th,
-  .el-table__header-wrapper {
+  :is(#app, #app-old, .columba-content-wrap, nav) :where(
+    thead,
+    .el-table th,
+    .el-table__header-wrapper
+  ) {
     background: var(--lc-surface-raised) !important;
     color: var(--lc-text) !important;
   }
 
-  tbody tr:hover,
-  .table-hover tbody tr:hover,
-  .el-table__body tr:hover > td {
+  :is(#app, #app-old, .columba-content-wrap, nav) :where(
+    tbody tr:hover,
+    .table-hover tbody tr:hover,
+    .el-table__body tr:hover > td
+  ) {
     background: var(--lc-surface-hover) !important;
   }
 
@@ -678,47 +821,56 @@
 
   .modal-backdrop,
   .el-overlay {
-    background: rgba(0, 0, 0, 0.72) !important;
+    background: var(--lc-overlay) !important;
   }
 
   /* Markdown, statements, editors, and evaluation output. */
-  pre,
-  code,
-  .code,
-  .markdown-body pre,
-  .markdown-body code,
-  .l-card.problem pre,
-  .l-card.problem code,
-  .CodeMirror,
-  .cm-editor,
-  .monaco-editor {
-    background: #151719 !important;
+  :is(#app, #app-old, .columba-content-wrap, nav) :where(
+    pre,
+    code,
+    .code,
+    .markdown-body pre,
+    .markdown-body code,
+    .l-card.problem pre,
+    .l-card.problem code,
+    .CodeMirror,
+    .cm-editor,
+    .monaco-editor
+  ) {
+    background: var(--lc-code) !important;
     border-color: var(--lc-border) !important;
-    color: #d7dde5 !important;
+    color: var(--lc-code-text) !important;
   }
 
-  pre,
-  .markdown-body pre,
-  .l-card.problem pre {
+  :is(#app, #app-old, .columba-content-wrap, nav) :where(
+    pre,
+    .markdown-body pre,
+    .l-card.problem pre
+  ) {
     border: 1px solid var(--lc-border) !important;
     border-radius: 6px !important;
   }
 
-  pre code,
-  .markdown-body pre code,
-  .l-card.problem pre code {
+  :is(#app, #app-old, .columba-content-wrap, nav) :where(
+    pre code,
+    .markdown-body pre code,
+    .l-card.problem pre code
+  ) {
     background: transparent !important;
     border: 0 !important;
   }
 
-  blockquote,
-  .markdown-body blockquote {
+  :is(#app, #app-old, .columba-content-wrap, nav) :where(
+    blockquote,
+    .markdown-body blockquote
+  ) {
     background: var(--lc-surface-raised) !important;
     border-left-color: var(--lc-accent) !important;
     color: var(--lc-text-secondary) !important;
   }
 
-  /* Semantic colors: retain success/warning/error meaning without neon saturation. */
+  /* 07. Semantic states */
+  /* Retain success/warning/error meaning without neon saturation. */
   .text-primary,
   .color-primary,
   .color-blue,
@@ -767,7 +919,7 @@
   .alert-info,
   .el-alert--info {
     background: var(--lc-accent-soft) !important;
-    border-color: rgba(99, 183, 217, 0.42) !important;
+    border-color: var(--lc-accent-border) !important;
     color: var(--lc-accent-hover) !important;
   }
 
@@ -775,24 +927,24 @@
   .alert-success,
   .el-alert--success {
     background: var(--lc-success-soft) !important;
-    border-color: rgba(121, 186, 145, 0.42) !important;
-    color: #a9e0b9 !important;
+    border-color: var(--lc-success-soft-border) !important;
+    color: var(--lc-success-text) !important;
   }
 
   .am-alert-warning,
   .alert-warning,
   .el-alert--warning {
     background: var(--lc-warning-soft) !important;
-    border-color: rgba(212, 174, 104, 0.42) !important;
-    color: #efd18e !important;
+    border-color: var(--lc-warning-border) !important;
+    color: var(--lc-warning-text) !important;
   }
 
   .am-alert-danger,
   .alert-danger,
   .el-alert--error {
     background: var(--lc-danger-soft) !important;
-    border-color: rgba(219, 127, 133, 0.42) !important;
-    color: #f2aeb2 !important;
+    border-color: var(--lc-danger-soft-border) !important;
+    color: var(--lc-danger-text) !important;
   }
 
   .am-badge,
@@ -808,7 +960,7 @@
   .badge-primary,
   .el-tag--info {
     background: var(--lc-accent-soft) !important;
-    border-color: rgba(99, 183, 217, 0.42) !important;
+    border-color: var(--lc-accent-border) !important;
     color: var(--lc-accent-hover) !important;
   }
 
@@ -816,10 +968,11 @@
   .badge-success,
   .el-tag--success {
     background: var(--lc-success-soft) !important;
-    border-color: rgba(121, 186, 145, 0.42) !important;
-    color: #a9e0b9 !important;
+    border-color: var(--lc-success-soft-border) !important;
+    color: var(--lc-success-text) !important;
   }
 
+  /* 08. Responsive */
   /* Keep the responsive layout usable instead of changing the site's geometry. */
   @media (max-width: 768px) {
     .lg-index-content,
@@ -833,8 +986,17 @@
       border-radius: 6px !important;
     }
 
-    .l-card.problem pre,
-    pre {
+    :is(
+      #app,
+      #app-old,
+      .columba-content-wrap,
+      nav,
+      .el-overlay,
+      .modal-backdrop,
+      .modal-content,
+      .el-dialog,
+      .el-message-box
+    ) :where(.l-card.problem pre, pre) {
       max-width: 100%;
       overflow-x: auto;
     }
