@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Codex Dark
 @namespace      github.com/physics3r/luogu-codex-dark
-@version        0.2.4
+@version        0.2.5
 @description    Codex-inspired dark theme for Luogu: charcoal surfaces, cool blue-cyan accents, and readable coding states.
 @author         Physics3r
 @homepageURL    https://www.luogu.com.cn/
@@ -240,6 +240,16 @@
   main.lfe-body.mobile-body {
     background: var(--lc-canvas) !important;
     color: var(--lc-text-secondary) !important;
+  }
+
+  /* Problem pages use a frosted image layer that the homepage does not have. */
+  .theme-page.theme-frosted {
+    background: var(--lc-canvas) !important;
+  }
+
+  .theme-page.theme-frosted::before {
+    background: var(--lc-canvas) !important;
+    background-image: none !important;
   }
 
   /* Verified homepage surfaces: .lg-index-content, .lg-article, #lg-slider, .am-panel. */
