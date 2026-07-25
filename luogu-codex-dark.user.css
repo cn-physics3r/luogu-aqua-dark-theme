@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Codex Dark
 @namespace      github.com/physics3r/luogu-codex-dark
-@version        0.2.9
+@version        0.2.15
 @description    Codex-inspired dark theme for Luogu: charcoal surfaces, cool blue-cyan accents, and readable coding states.
 @author         Physics3r
 @homepageURL    https://www.luogu.com.cn/
@@ -304,11 +304,118 @@
     color: var(--lc-text) !important;
   }
 
+  /* Keep the keyword search as one visual control; the wrapper owns the border. */
+  #app .filter-section .refined-input.search-text input.search-text {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
   .bottom-wrap.float .toolbar,
   .bottom-wrap.float .toolbar-left,
   .bottom-wrap.float .page-bar {
     background: transparent !important;
     color: var(--lc-text-secondary) !important;
+  }
+
+  /* Problem-list tabs and result count verified on /problem/list. */
+  .columba-content-wrap.main-content .l-card .luogu {
+    background: var(--lc-surface-raised) !important;
+    border-bottom: 1px solid var(--lc-border) !important;
+    border-color: var(--lc-border) !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  .columba-content-wrap.main-content .l-card .luogu li {
+    background: transparent !important;
+    border-color: transparent !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  .columba-content-wrap.main-content .l-card .luogu li:hover:not(.selected) {
+    background: var(--lc-surface-hover) !important;
+    color: var(--lc-text) !important;
+  }
+
+  .columba-content-wrap.main-content .l-card .luogu li.selected {
+    background: var(--lc-accent) !important;
+    color: var(--lc-text-on-accent) !important;
+  }
+
+  .columba-content-wrap.main-content .l-card .result .count {
+    color: var(--lc-text-secondary) !important;
+  }
+
+  .columba-content-wrap.main-content .l-card .result .count .number {
+    color: var(--lc-text) !important;
+  }
+
+  .filter-section .filter-tags .tag-button,
+  .filter-section .filter-tags .tag-button:hover,
+  .filter-section .filter-tags .tag-button:focus {
+    color: var(--lc-text-secondary) !important;
+  }
+
+  .columba-content-wrap.main-content .l-card .header-wrap {
+    border-bottom: 1px solid var(--lc-border) !important;
+  }
+
+  /* Tag selector modal verified on /problem/list. */
+  .modal .l-card.container.type-burger {
+    color: var(--lc-text-secondary) !important;
+  }
+
+  .modal .l-card.container.type-burger .menu-container,
+  .modal .l-card.container.type-burger .menu,
+  .modal .l-card.container.type-burger .items,
+  .modal .l-card.container.type-burger .tag-select-area {
+    background: transparent !important;
+    border-color: var(--lc-border) !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  .modal .l-card.container.type-burger .menu .entry,
+  .modal .l-card.container.type-burger .tag-select-area .section,
+  .modal .l-card.container.type-burger .tag-select-area .title {
+    color: var(--lc-text-secondary) !important;
+  }
+
+  .modal .l-card.container.type-burger .menu .entry:hover {
+    background: var(--lc-surface-hover) !important;
+    color: var(--lc-text) !important;
+  }
+
+  .modal .l-card.container.type-burger .menu .entry.selected {
+    background: transparent !important;
+    border-color: var(--lc-accent) !important;
+    color: var(--lc-accent) !important;
+  }
+
+  .modal .l-card.container.type-burger .tag-select-area .section {
+    border-color: var(--lc-border) !important;
+  }
+
+  .modal .l-card.container.type-burger .toggle-tag {
+    background: var(--lc-surface-raised) !important;
+    border: 1px solid var(--lc-border) !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  .modal .l-card.container.type-burger .toggle-tag:hover,
+  .modal .l-card.container.type-burger .toggle-tag.selected,
+  .modal .l-card.container.type-burger .toggle-tag.active {
+    background: var(--lc-surface-hover) !important;
+    border-color: var(--lc-accent) !important;
+    color: var(--lc-text) !important;
+  }
+
+  .modal .l-card.container.type-burger .close {
+    color: var(--lc-text-secondary) !important;
+  }
+
+  .modal .l-card.container.type-burger .close:hover {
+    color: var(--lc-text) !important;
   }
 
   .columba-content-wrap.main-content .sidebar-container.layout .main .l-card .title {
@@ -411,9 +518,14 @@
   }
 
   .am-comment,
-  .am-comment-main,
-  .am-comment-bd,
   #feed .am-comment-primary {
+    background: transparent !important;
+    border-color: transparent !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  .am-comment-main,
+  .am-comment-bd {
     background: var(--lc-surface) !important;
     border-color: var(--lc-border) !important;
     color: var(--lc-text-secondary) !important;
@@ -423,6 +535,21 @@
   .am-comment-bd p,
   .am-comment-bd blockquote {
     color: var(--lc-text-secondary) !important;
+  }
+
+  .am-comment-hd {
+    background: var(--lc-surface-raised) !important;
+    border-color: var(--lc-border) !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  .am-comment-hd .am-comment-meta {
+    color: var(--lc-text-muted) !important;
+  }
+
+  .am-comment-hd .am-comment-author,
+  .am-comment-hd a {
+    color: var(--lc-accent) !important;
   }
 
   /* Highcharts writes SVG presentation attributes, so override fill/stroke explicitly. */

@@ -11,9 +11,9 @@
 
 ## 当前覆盖
 
-- 首页登录态旧组件：`.wrapper.wrapped.lfe-body.header-layout.tiny`、`.header-layout > .background`、`main.lfe-body.mobile-body`、`.lg-index-content`、`.lg-article`、`#lg-slider`、`.am-panel.lg-index-contest`、`.am-comment-bd`、`.highcharts-root`。
-- 题目列表/题目页登录态组件：`.filter-section .text.lform-size-middle`、`.filter-section .refined-input.search-text`、`.bottom-wrap.float`、`.columba-content-wrap.main-content > .sidebar-container.layout > .main > .l-card .title`、`.progress-frame`、题目列表 `.row` 分隔线、`.top-bar`、`.sidebar.lside`、`.user-nav.rside`、`.theme-page.theme-frosted`、`.theme-page.theme-frosted::before`、`.columba-content-wrap.main-content`、`.l-card.header-card`、`.l-card.problem`、`.l-card::before`、`.sidebar-container.reverse.layout`、`.lfe-h2`、`.lfe-h3`。
-- 跨页面组件：表单、按钮、表格、标签页、弹窗、Markdown、代码块、评测状态色和滚动条。
+- 首页登录态旧组件：`.wrapper.wrapped.lfe-body.header-layout.tiny`、`.header-layout > .background`、`main.lfe-body.mobile-body`、`.lg-index-content`、`.lg-article`、`#lg-slider`、`.am-panel.lg-index-contest`、`.am-comment-hd`、`.am-comment-bd`、`.highcharts-root`。
+- 题目列表/题目页登录态组件：`.filter-section .text.lform-size-middle`、`.filter-section .refined-input.search-text`、`.filter-section .filter-tags .tag-button`、`.bottom-wrap.float`、`.l-card .luogu` 题库标签、`.l-card .result .count` 结果统计、`.l-card .header-wrap` 表头分隔线、`.columba-content-wrap.main-content > .sidebar-container.layout > .main > .l-card .title`、`.progress-frame`、题目列表 `.row` 分隔线、`.top-bar`、`.sidebar.lside`、`.user-nav.rside`、`.theme-page.theme-frosted`、`.theme-page.theme-frosted::before`、`.columba-content-wrap.main-content`、`.l-card.header-card`、`.l-card.problem`、`.l-card::before`、`.sidebar-container.reverse.layout`、`.lfe-h2`、`.lfe-h3`。
+- 跨页面组件：表单、按钮、表格、标签页、弹窗、Markdown、代码块、评测状态色和滚动条；题目列表的标签选择弹窗包含专属深色覆盖。
 
 这些选择器是在 2026-07-25 通过已登录浏览器核实洛谷主页和 `P1000` 题目页后写入的；同时确认了登录态顶部栏、左右侧栏、首页 Highcharts 图表、评论流，以及题目卡片的白色 `::before` 覆盖层。题解、评测记录和个人页仍未把未经页面确认的专属类名写进主题。
 
@@ -59,7 +59,7 @@
 修改后至少检查以下页面和组件：
 
 - 首页登录态：顶栏、左右侧栏、轮播图、赛事面板、评论和图表。
-- `/problem/list`：筛选器、搜索框、分页、题目卡片和进度条。
+- `/problem/list`：题库切换标签、筛选器、搜索框、结果统计、分页、题目卡片和进度条。
 - `/problem/P1000`：题目卡片、题面、代码块、标签、按钮和分隔线。
 - 移动端宽度：页面宽度、卡片圆角和代码块横向滚动。
 - 图片资源：赛事图片、头像和轮播图不应被暗色滤镜处理。
