@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Codex Dark
 @namespace      github.com/physics3r/luogu-codex-dark
-@version        0.2.7
+@version        0.2.8
 @description    Codex-inspired dark theme for Luogu: charcoal surfaces, cool blue-cyan accents, and readable coding states.
 @author         Physics3r
 @homepageURL    https://www.luogu.com.cn/
@@ -295,6 +295,10 @@
 
   .columba-content-wrap.main-content > .sidebar-container.layout > .main > .l-card .progress-frame .square {
     background: var(--lc-accent) !important;
+  }
+
+  .columba-content-wrap.main-content > .sidebar-container.layout > .main > .l-card .row {
+    border-bottom: 1px solid var(--lc-border) !important;
   }
 
   /* Verified homepage surfaces: .lg-index-content, .lg-article, #lg-slider, .am-panel. */
