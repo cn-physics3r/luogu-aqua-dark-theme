@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Codex Dark
 @namespace      github.com/physics3r/luogu-codex-dark
-@version        0.2.51
+@version        0.2.54
 @description    Codex-inspired dark theme for Luogu: charcoal surfaces, cool blue-cyan accents, and readable coding states.
 @author         Physics3r
 @homepageURL    https://www.luogu.com.cn/
@@ -66,6 +66,22 @@
     --lc-text-on-accent: #ffffff;
     --lc-primary-bg: #347b9e;
     --lc-primary-border: #4d9fc3;
+    --lc-difficulty-entry-bg: #fe4c61;
+    --lc-difficulty-entry-border: #e94054;
+    --lc-difficulty-popular-minus-bg: #f39c11;
+    --lc-difficulty-popular-minus-border: #ca8920;
+    --lc-difficulty-popular-bg: #ffc116;
+    --lc-difficulty-popular-border: #e0ab19;
+    --lc-difficulty-popular-plus-bg: #53c41a;
+    --lc-difficulty-popular-plus-border: #50a127;
+    --lc-difficulty-advanced-bg: #13c2c2;
+    --lc-difficulty-advanced-border: #219f9f;
+    --lc-difficulty-select-bg: #3498db;
+    --lc-difficulty-select-border: #2b86c5;
+    --lc-difficulty-noi-bg: #9d3dcf;
+    --lc-difficulty-noi-border: #8233b2;
+    --lc-difficulty-noi-plus-bg: #2949b4;
+    --lc-difficulty-noi-plus-border: #1d368e;
     --lc-radius: 8px;
   }
 
@@ -421,6 +437,78 @@
     box-shadow: none !important;
   }
 
+  /* The opened filter dropdown is teleported to #app instead of staying in .combo-wrapper. */
+  #app:has(main .filter-section) > .dropdown:has(> ul > li) {
+    background: var(--lc-surface-raised) !important;
+    border-color: var(--lc-border) !important;
+    box-shadow: var(--lc-shadow-small) !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  #app:has(main .filter-section) > .dropdown:has(> ul > li) li {
+    background: transparent !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  #app:has(main .filter-section) > .dropdown:has(> ul > li) li:hover,
+  #app:has(main .filter-section) > .dropdown:has(> ul > li) li:focus {
+    background: var(--lc-surface-hover) !important;
+    color: var(--lc-text) !important;
+  }
+
+  /* Match the difficulty badges used by the problem rows. */
+  #app:has(main .filter-section) > .dropdown:has(> ul > li) li > span > span {
+    display: inline-block !important;
+    box-sizing: border-box;
+    border: 1px solid transparent !important;
+    border-radius: 2px !important;
+    color: var(--lc-text-on-accent) !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 21px !important;
+    padding: 0 7px !important;
+  }
+
+  #app:has(main .filter-section) > .dropdown:has(> ul > li) li > span > .lcolor--pink-3 {
+    background: var(--lc-difficulty-entry-bg) !important;
+    border-color: var(--lc-difficulty-entry-border) !important;
+  }
+
+  #app:has(main .filter-section) > .dropdown:has(> ul > li) li > span > .lcolor--orange-3 {
+    background: var(--lc-difficulty-popular-minus-bg) !important;
+    border-color: var(--lc-difficulty-popular-minus-border) !important;
+  }
+
+  #app:has(main .filter-section) > .dropdown:has(> ul > li) li > span > .lcolor--gold-3 {
+    background: var(--lc-difficulty-popular-bg) !important;
+    border-color: var(--lc-difficulty-popular-border) !important;
+  }
+
+  #app:has(main .filter-section) > .dropdown:has(> ul > li) li > span > .lcolor--green-3 {
+    background: var(--lc-difficulty-popular-plus-bg) !important;
+    border-color: var(--lc-difficulty-popular-plus-border) !important;
+  }
+
+  #app:has(main .filter-section) > .dropdown:has(> ul > li) li > span > .lcolor--cyan-3 {
+    background: var(--lc-difficulty-advanced-bg) !important;
+    border-color: var(--lc-difficulty-advanced-border) !important;
+  }
+
+  #app:has(main .filter-section) > .dropdown:has(> ul > li) li > span > .lcolor--blue-3 {
+    background: var(--lc-difficulty-select-bg) !important;
+    border-color: var(--lc-difficulty-select-border) !important;
+  }
+
+  #app:has(main .filter-section) > .dropdown:has(> ul > li) li > span > .lcolor--purple-3 {
+    background: var(--lc-difficulty-noi-bg) !important;
+    border-color: var(--lc-difficulty-noi-border) !important;
+  }
+
+  #app:has(main .filter-section) > .dropdown:has(> ul > li) li > span > .lcolor--lapis-4 {
+    background: var(--lc-difficulty-noi-plus-bg) !important;
+    border-color: var(--lc-difficulty-noi-plus-border) !important;
+  }
+
   .bottom-wrap.float .toolbar,
   .bottom-wrap.float .toolbar-left,
   .bottom-wrap.float .page-bar {
@@ -546,6 +634,10 @@
     background: transparent !important;
     border-bottom: 1px solid var(--lc-border) !important;
     transition: color 140ms ease !important;
+  }
+
+  .columba-content-wrap.main-content > .sidebar-container.layout > .main > .l-card.main .row-wrap .row:last-child {
+    border-bottom: 0 !important;
   }
 
   /* 04. Homepage */
@@ -824,7 +916,171 @@
     border-color: var(--lc-border) !important;
   }
 
-  /* 06. Shared controls and components */
+  /* 06. Evaluation records page */
+  /* Verified on /record/list?user=2067756 in the authenticated Chrome session. */
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > section > .card.padding-default {
+    background: var(--lc-surface-raised) !important;
+    border: 1px solid var(--lc-border) !important;
+    border-radius: var(--lc-radius) !important;
+    box-shadow: var(--lc-shadow-small) !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default {
+    background: var(--lc-surface) !important;
+    border: 1px solid var(--lc-border) !important;
+    border-radius: var(--lc-radius) !important;
+    box-shadow: var(--lc-shadow-small) !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) .search-input,
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) .block,
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) .result-count,
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) .total,
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) .page-bar {
+    color: var(--lc-text-secondary) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) .result-count .number {
+    color: var(--lc-text) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) .combo-wrapper .text {
+    background: var(--lc-control) !important;
+    border-color: var(--lc-border-strong) !important;
+    color: var(--lc-text) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) .combo-wrapper .arrow {
+    color: var(--lc-text-muted) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) .combo-wrapper .dropdown {
+    background: var(--lc-surface-raised) !important;
+    border-color: var(--lc-border) !important;
+    box-shadow: var(--lc-shadow-small) !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) .combo-wrapper .dropdown li {
+    background: transparent !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) .combo-wrapper .dropdown li:hover,
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) .combo-wrapper .dropdown li:focus {
+    background: var(--lc-surface-hover) !important;
+    color: var(--lc-text) !important;
+  }
+
+  /* The opened status menu is teleported to body > .dropdown. */
+  body:has(main.lfe-body.mobile-body .full-container .search-input) > .dropdown:has(> ul > li) {
+    background: var(--lc-surface-raised) !important;
+    border-color: var(--lc-border) !important;
+    box-shadow: var(--lc-shadow-small) !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  body:has(main.lfe-body.mobile-body .full-container .search-input) > .dropdown:has(> ul > li) li {
+    background: transparent !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  body:has(main.lfe-body.mobile-body .full-container .search-input) > .dropdown:has(> ul > li) li:hover,
+  body:has(main.lfe-body.mobile-body .full-container .search-input) > .dropdown:has(> ul > li) li:focus {
+    background: var(--lc-surface-hover) !important;
+    color: var(--lc-text) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .border.table {
+    background: transparent !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .row,
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .row:hover,
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .row-wrap:hover .row {
+    background: transparent !important;
+    border-bottom: 1px solid var(--lc-border) !important;
+    color: var(--lc-text-secondary) !important;
+    transition: background-color 140ms ease, color 140ms ease !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .row-wrap .row:last-child {
+    border-bottom: 0 !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .row-wrap:hover .row {
+    background: var(--lc-surface-hover) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .row .user a,
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .row .user a span {
+    color: var(--lc-text) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .row .user .lfe-caption {
+    color: var(--lc-text-muted) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .row .problem a {
+    color: var(--lc-accent) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .row .detail,
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .row .detail svg {
+    color: var(--lc-text-muted) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .status-name {
+    background: var(--lc-surface-raised) !important;
+    border: 1px solid var(--lc-border-strong) !important;
+    border-radius: 4px;
+    color: var(--lc-text-secondary) !important;
+    font-weight: 600;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .status-link:has(.status-name[style*="82, 196, 26"]) .status-name {
+    background: var(--lc-success-bg) !important;
+    border-color: var(--lc-success-border) !important;
+    color: var(--lc-success-on) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .status-link:has(.status-name[style*="82, 196, 26"]) > span:not(.status-name) {
+    color: var(--lc-success-text) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .status-link:has(.status-name[style*="231, 76, 60"]) .status-name {
+    background: var(--lc-danger-bg) !important;
+    border-color: var(--lc-danger-border) !important;
+    color: var(--lc-danger-on) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .status-link:has(.status-name[style*="231, 76, 60"]) > span:not(.status-name) {
+    color: var(--lc-danger-text) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .bottom,
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .bottom-inner {
+    background: transparent !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .page-bar button {
+    background: var(--lc-surface-raised) !important;
+    border-color: var(--lc-border-strong) !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .page-bar button:hover,
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .page-bar button.selected {
+    background: var(--lc-accent) !important;
+    border-color: var(--lc-accent) !important;
+    color: var(--lc-text-on-accent) !important;
+  }
+
+  /* 07. Shared controls and components */
   /* Scope native controls to known Luogu application roots. */
   :is(
     #app,
@@ -1052,7 +1308,7 @@
     color: var(--lc-text-secondary) !important;
   }
 
-  /* 07. Semantic states */
+  /* 08. Semantic states */
   /* Retain success/warning/error meaning without neon saturation. */
   .text-primary,
   .color-primary,
@@ -1140,7 +1396,7 @@
     color: var(--lc-success-text) !important;
   }
 
-  /* 08. Responsive */
+  /* 09. Responsive */
   /* Keep the responsive layout usable instead of changing the site's geometry. */
   @media (max-width: 768px) {
     .lg-index-content,
@@ -1150,7 +1406,9 @@
     }
 
     .lg-article,
-    .l-card {
+    .l-card,
+    main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > section > .card.padding-default,
+    main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default {
       border-radius: 6px !important;
     }
 
