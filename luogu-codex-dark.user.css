@@ -1,13 +1,13 @@
 /* ==UserStyle==
 @name           Luogu Codex Dark
 @namespace      github.com/physics3r/luogu-codex-dark
-@version        0.2.15
+@version        0.2.25
 @description    Codex-inspired dark theme for Luogu: charcoal surfaces, cool blue-cyan accents, and readable coding states.
 @author         Physics3r
 @homepageURL    https://www.luogu.com.cn/
 ==/UserStyle== */
 
-@-moz-document domain("luogu.com.cn") {
+@-moz-document domain("www.luogu.com.cn") {
   /* 01. Theme tokens */
   :root {
     color-scheme: dark;
@@ -24,7 +24,6 @@
     --lc-text: #e5e7eb;
     --lc-text-secondary: #b2b8c2;
     --lc-text-muted: #8b929d;
-    --lc-text-faint: #6f7782;
 
     --lc-accent: #63b7d9;
     --lc-accent-hover: #8bd1e8;
@@ -450,6 +449,11 @@
     color: var(--lc-text-secondary) !important;
   }
 
+  /* The homepage real-name warning uses inline color:red; align it with the theme danger token. */
+  .lg-index-benben .lg-article p[style*="color:red"] {
+    color: var(--lc-danger) !important;
+  }
+
   .lg-article h1,
   .lg-article h2,
   .lg-article h3,
@@ -517,6 +521,41 @@
     background: var(--lc-surface-raised) !important;
   }
 
+  /* Keep the homepage's original contest semantics visible on dark surfaces. */
+  .lg-index-content .lg-index-contest .am-panel-hd {
+    background: var(--lc-success-soft) !important;
+    border-color: var(--lc-success-soft-border) !important;
+  }
+
+  .lg-index-content .lg-index-contest .am-panel-title,
+  .lg-index-content .lg-index-contest .am-panel-title a {
+    color: var(--lc-success-text) !important;
+  }
+
+  /* Keep contest metadata subdued regardless of Luogu's source badge color. */
+  .lg-index-content .lg-index-contest :is(
+    .lg-bg-green,
+    .lg-bg-greendark,
+    .lg-bg-red,
+    .lg-bg-yellow,
+    .lg-bg-orange,
+    .lg-bg-purple
+  ) {
+    background: var(--lc-surface-raised) !important;
+    border-color: var(--lc-border-strong) !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  /* Discussion cards use primary panels; keep every linked author name neutral white. */
+  .lg-index-content .am-panel.lg-index-contest.am-panel-primary a[href^="/user/"] {
+    color: var(--lc-text) !important;
+  }
+
+  /* Verified logged-out fortune color: .lg-index-calendar.lg-fg-greendark. */
+  .lg-index-content .lg-punch .lg-index-calendar.lg-fg-greendark {
+    color: var(--lc-success-text) !important;
+  }
+
   .am-comment,
   #feed .am-comment-primary {
     background: transparent !important;
@@ -550,6 +589,13 @@
   .am-comment-hd .am-comment-author,
   .am-comment-hd a {
     color: var(--lc-accent) !important;
+  }
+
+  /* Keep neutral pin labels distinct without turning discussion cards neon. */
+  #feed .am-comment .am-comment-hd .am-badge {
+    background: var(--lc-surface-hover) !important;
+    border-color: var(--lc-border-strong) !important;
+    color: var(--lc-text-secondary) !important;
   }
 
   /* Highcharts writes SVG presentation attributes, so override fill/stroke explicitly. */
@@ -728,12 +774,12 @@
     .el-dialog,
     .el-message-box
   ) :where(
-    input::placeholder,
-    textarea::placeholder,
-    .el-input__inner::placeholder,
-    .el-textarea__inner::placeholder
-  ) {
-    color: var(--lc-text-faint) !important;
+    input,
+    textarea,
+    .el-input__inner,
+    .el-textarea__inner
+  )::placeholder {
+    color: var(--lc-text-muted) !important;
   }
 
   :is(
@@ -1023,7 +1069,8 @@
   .text-danger,
   .color-danger,
   .lfe-color-danger,
-  .am-text-danger {
+  .am-text-danger,
+  .lg-fg-red {
     color: var(--lc-danger) !important;
   }
 
