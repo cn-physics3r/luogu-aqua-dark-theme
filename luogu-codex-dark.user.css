@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Codex Dark
 @namespace      github.com/physics3r/luogu-codex-dark
-@version        0.2.34
+@version        0.2.45
 @description    Codex-inspired dark theme for Luogu: charcoal surfaces, cool blue-cyan accents, and readable coding states.
 @author         Physics3r
 @homepageURL    https://www.luogu.com.cn/
@@ -264,7 +264,7 @@
   .wrapper.wrapped.lfe-body.header-layout.tiny .user-nav a:hover,
   .wrapper.wrapped.lfe-body.header-layout.tiny .user-nav .link:hover,
   .wrapper.wrapped.lfe-body.header-layout.tiny .user-nav a:focus-visible {
-    background: var(--lc-nav-hover) !important;
+    background: transparent !important;
     color: var(--lc-accent-hover) !important;
   }
 
@@ -276,12 +276,51 @@
 
   nav.lfe-body > a:not(.logo-wrap),
   nav.user-nav a,
+  .top-bar .logo-link,
+  .top-bar .breadcrumb a,
   .top-bar .header-link,
   .top-bar .user-nav .link,
   .wrapper.wrapped.lfe-body.header-layout.tiny .header-link,
   .wrapper.wrapped.lfe-body.header-layout.tiny .user-nav a {
     border-radius: 6px;
-    transition: color 140ms ease, background-color 140ms ease, border-color 140ms ease;
+    transition: color 240ms ease-out, background-color 240ms ease-out, border-color 240ms ease-out;
+  }
+
+  .top-bar .breadcrumb a,
+  .top-bar .breadcrumb a:hover,
+  .top-bar .breadcrumb a:focus-visible {
+    background: transparent !important;
+    transition: color 240ms ease-out !important;
+  }
+
+  .top-bar .logo-link:hover,
+  .top-bar .logo-link:focus-visible,
+  .top-bar .user-nav .link:hover,
+  .top-bar .user-nav .link:focus-visible {
+    background-color: transparent !important;
+  }
+
+  nav.lfe-body > a:not(.logo-wrap) {
+    border-radius: 0 !important;
+  }
+
+  nav.lfe-body .popup-wrap:has(.apps) .popup {
+    background: var(--lc-surface-raised) !important;
+    border-color: var(--lc-border) !important;
+    box-shadow: var(--lc-shadow-small) !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  nav.lfe-body .popup-wrap:has(.apps) .apps a {
+    background: transparent !important;
+    border-radius: 0 !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  nav.lfe-body .popup-wrap:has(.apps) .apps a:hover,
+  nav.lfe-body .popup-wrap:has(.apps) .apps a:focus-visible {
+    background: var(--lc-nav-hover) !important;
+    color: var(--lc-accent-hover) !important;
   }
 
   .header-layout .center {
@@ -316,48 +355,53 @@
   }
 
   .sidebar.lside a,
-  .sidebar.lside .icon,
-  .sidebar.lside .title,
-  .user-nav.rside a,
-  .user-nav.rside .icon,
-  .user-nav.rside .title {
+  .user-nav.rside a {
     color: var(--lc-text-secondary) !important;
+    transition: color 240ms ease-out !important;
+  }
+
+  .sidebar.lside a .icon,
+  .sidebar.lside a .title,
+  .user-nav.rside a .icon,
+  .user-nav.rside a .title,
+  .sidebar.lside a svg,
+  .user-nav.rside a svg {
+    color: inherit !important;
+    transition: none !important;
   }
 
   .sidebar.lside a:hover,
-  .sidebar.lside li:hover,
   .user-nav.rside a:hover,
-  .user-nav.rside li:hover,
   .sidebar.lside a:focus-visible,
-  .user-nav.rside a:focus-visible {
-    background: var(--lc-nav-hover) !important;
-    color: var(--lc-accent-hover) !important;
-  }
-
+  .user-nav.rside a:focus-visible,
   .sidebar.lside li:hover > a,
-  .sidebar.lside li:hover .icon,
-  .sidebar.lside li:hover .title,
-  .user-nav.rside li:hover > a,
-  .user-nav.rside li:hover .icon,
-  .user-nav.rside li:hover .title,
-  .sidebar.lside a:focus-visible .icon,
-  .sidebar.lside a:focus-visible .title,
-  .user-nav.rside a:focus-visible .icon,
-  .user-nav.rside a:focus-visible .title {
+  .user-nav.rside li:hover > a {
+    background: transparent !important;
     color: var(--lc-accent-hover) !important;
   }
 
-  /* Active entries use an accent text cue; full fills are reserved for hover. */
+  /* Active entries use a darker accent so hovering them still has a visible transition. */
   .sidebar.lside a.router-link-active,
   .user-nav.rside a.router-link-active,
   .top-bar a.router-link-active {
-    color: var(--lc-accent-hover) !important;
+    color: var(--lc-accent) !important;
   }
 
   .sidebar.lside a.router-link-active .icon,
   .sidebar.lside a.router-link-active .title,
   .user-nav.rside a.router-link-active .icon,
   .user-nav.rside a.router-link-active .title {
+    color: inherit !important;
+  }
+
+  /* Keep the current breadcrumb visibly different before and during hover. */
+  .top-bar .breadcrumb a.router-link-active {
+    color: var(--lc-accent) !important;
+    transition: color 240ms ease-out !important;
+  }
+
+  .top-bar .breadcrumb a.router-link-active:hover,
+  .top-bar .breadcrumb a.router-link-active:focus-visible {
     color: var(--lc-accent-hover) !important;
   }
 
@@ -536,8 +580,12 @@
     background: var(--lc-accent) !important;
   }
 
-  .columba-content-wrap.main-content .sidebar-container.layout .main .l-card .row {
+  .columba-content-wrap.main-content .sidebar-container.layout .main .l-card .row,
+  .columba-content-wrap.main-content .sidebar-container.layout .main .l-card .row:hover,
+  .columba-content-wrap.main-content .sidebar-container.layout .main .l-card .row-wrap:hover .row {
+    background: transparent !important;
     border-bottom: 1px solid var(--lc-border) !important;
+    transition: color 140ms ease !important;
   }
 
   /* 04. Homepage */
@@ -650,6 +698,12 @@
     background: var(--lc-surface-raised) !important;
     border-color: var(--lc-border-strong) !important;
     color: var(--lc-text-secondary) !important;
+  }
+
+  .lg-index-content .lg-index-contest .am-panel-title .am-badge.lg-bg-green {
+    background: var(--lc-success-bg) !important;
+    border-color: var(--lc-success-border) !important;
+    color: var(--lc-success-on) !important;
   }
 
   /* Discussion cards use primary panels; keep every linked author name neutral white. */

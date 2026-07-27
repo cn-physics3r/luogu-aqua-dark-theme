@@ -11,8 +11,8 @@
 
 ## 当前覆盖
 
-- 首页登录态旧组件：`.wrapper.wrapped.lfe-body.header-layout.tiny`、`.header-layout > .background`、`.header-link`、`main.lfe-body.mobile-body`、`.lg-index-content`、`.lg-article`、`.lg-index-benben .lg-article p[style*="color:red"]`、`#lg-slider`、`.am-panel.lg-index-contest`、`.am-panel.lg-index-contest.am-panel-primary`、`.lg-punch`、`.lg-index-calendar.lg-fg-greendark`、`.lg-fg-red`、`.am-comment-hd`、`.am-comment-bd`、`.highcharts-root`；赛事元数据标签统一使用中性深灰，讨论置顶标签保持独立层级，讨论作者名统一使用主文字色。
-- 题目列表/题目页登录态组件：`.filter-section .text.lform-size-middle`、`.filter-section .refined-input.search-text`、`.filter-section .filter-tags .tag-button`、`.bottom-wrap.float`、`.l-card .luogu` 题库标签、`.l-card .result .count` 结果统计、`.l-card .header-wrap` 表头分隔线、`.columba-content-wrap.main-content > .sidebar-container.layout > .main > .l-card .title`、`.progress-frame`、题目列表 `.row` 分隔线、`.top-bar`、`.sidebar.lside`、`.user-nav.rside`、`.theme-page.theme-frosted`、`.theme-page.theme-frosted::before`、`.columba-content-wrap.main-content`、`.l-card.header-card`、`.l-card.problem`、`.l-card::before`、`.sidebar-container.reverse.layout`、`.lfe-h2`、`.lfe-h3`。
+- 首页登录态旧组件：`.wrapper.wrapped.lfe-body.header-layout.tiny`、`.header-link`、`nav.lfe-body .popup-wrap:has(.apps)`、`.header-layout > .background`、`main.lfe-body.mobile-body`、`.lg-index-content`、`.lg-article`、`.lg-index-benben .lg-article p[style*="color:red"]`、`#lg-slider`、`.am-panel.lg-index-contest`、`.am-panel.lg-index-contest.am-panel-primary`、`.lg-punch`、`.lg-index-calendar.lg-fg-greendark`、`.lg-fg-red`、`.am-comment-hd`、`.am-comment-bd`、`.highcharts-root`；近期比赛中的 `Rated` 标签保留绿色，其他赛事元数据标签统一使用中性深灰，讨论置顶标签保持独立层级，讨论作者名统一使用主文字色。
+- 题目列表/题目页登录态组件：`.filter-section .text.lform-size-middle`、`.filter-section .refined-input.search-text`、`.filter-section .filter-tags .tag-button`、`.bottom-wrap.float`、`.l-card .luogu` 题库标签、`.l-card .result .count` 结果统计、`.l-card .header-wrap` 表头分隔线、`.columba-content-wrap.main-content > .sidebar-container.layout > .main > .l-card .title`、`.progress-frame`、题目列表 `.row` 分隔线与无背景悬浮状态、`.top-bar`、`.sidebar.lside`、`.user-nav.rside`、`.theme-page.theme-frosted`、`.theme-page.theme-frosted::before`、`.columba-content-wrap.main-content`、`.l-card.header-card`、`.l-card.problem`、`.l-card::before`、`.sidebar-container.reverse.layout`、`.lfe-h2`、`.lfe-h3`。
 - 跨页面组件：表单、按钮、表格、标签页、弹窗、Markdown、代码块、评测状态色和滚动条；题目列表的标签选择弹窗包含专属深色覆盖。
 
 这些选择器是在 2026-07-27 通过已登录浏览器核实洛谷主页和 `P1000` 题目页后写入的；同时确认了登录态顶部栏、左右侧栏、首页 Highcharts 图表、评论流，以及题目卡片的白色 `::before` 覆盖层。题解、评测记录和个人页仍未把未经页面确认的专属类名写进主题。
@@ -56,6 +56,7 @@
 - 不改变页面信息架构和主要布局，只调整表面颜色、层级、边框和交互状态。
 - 顶栏使用独立的深蓝灰表面、底部边界和柔和阴影，与页面内容保持明确层级。
 - 顶栏仅在底部绘制清晰向下扩散的柔和阴影；其它页面的现代左侧栏不额外添加阴影。
+- 题目列表行和现代侧栏悬浮时不改变背景；顶栏和侧栏仅由链接本身以平滑的颜色过渡切换文字和图标强调色，当前项目也保留可见的悬浮颜色差异，不移动导航元素。
 - 首页赛事元数据标签有意收敛为中性深灰，不沿用原站绿色、红色、黄色和紫色背景。
 - 后续若要继续增强，优先在已登录状态下补充题解、评测记录和个人主页的专属组件细节。
 
