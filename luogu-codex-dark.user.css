@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Codex Dark
 @namespace      github.com/physics3r/luogu-codex-dark
-@version        0.2.25
+@version        0.2.34
 @description    Codex-inspired dark theme for Luogu: charcoal surfaces, cool blue-cyan accents, and readable coding states.
 @author         Physics3r
 @homepageURL    https://www.luogu.com.cn/
@@ -18,11 +18,14 @@
     --lc-surface: #1f2124;
     --lc-surface-raised: #26292d;
     --lc-surface-hover: #2b3036;
+    --lc-nav-hover: #29333b;
+    --lc-brand-blue: #3498db;
     --lc-border: #343940;
     --lc-border-strong: #454c55;
 
     --lc-text: #e5e7eb;
     --lc-text-secondary: #b2b8c2;
+    --lc-text-secondary-rgb: 178, 184, 194;
     --lc-text-muted: #8b929d;
 
     --lc-accent: #63b7d9;
@@ -51,6 +54,8 @@
     --lc-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
     --lc-shadow-small: 0 2px 10px rgba(0, 0, 0, 0.18);
     --lc-header-shadow: 0 2px 14px rgba(0, 0, 0, 0.28);
+    --lc-modern-header-shadow: rgba(0, 0, 0, 0.32);
+    --lc-sidebar-shadow: 2px 0 14px rgba(0, 0, 0, 0.28);
     --lc-focus-ring: 0 0 0 3px var(--lc-accent-soft);
     --lc-selection: rgba(99, 183, 217, 0.32);
     --lc-overlay: rgba(0, 0, 0, 0.72);
@@ -127,32 +132,50 @@
   }
 
   /* 03. Navigation and page shell */
-  /* Verified navigation surfaces: nav.lfe-body and nav.user-nav. */
+  /* Verified navigation surfaces: legacy nav.lfe-body and modern top-bar/sidebar. */
   nav.lfe-body {
     background: var(--lc-sidebar) !important;
     border-color: var(--lc-border) !important;
     color: var(--lc-text-secondary) !important;
+    box-shadow: var(--lc-sidebar-shadow) !important;
+    z-index: 11 !important;
+    --theme-navi-back: var(--lc-sidebar) !important;
+    --theme-navi-fore: var(--lc-text-secondary) !important;
+    --theme-navi-fore-rgb: var(--lc-text-secondary-rgb) !important;
   }
 
   nav.lfe-body a,
   nav.lfe-body .color-none,
   nav.lfe-body li,
-  nav.lfe-body .lfe-caption {
+  nav.lfe-body .lfe-caption,
+  nav.lfe-body .popup-button {
     color: var(--lc-text-secondary) !important;
   }
 
-  nav.lfe-body a:hover,
+  nav.lfe-body > a:not(.logo-wrap):hover,
   nav.lfe-body li:hover,
-  nav.lfe-body .active,
-  nav.lfe-body .router-link-active {
-    background: var(--lc-surface-hover) !important;
-    color: var(--lc-text) !important;
+  nav.lfe-body > a:not(.logo-wrap):focus-visible {
+    background: var(--lc-nav-hover) !important;
+    color: var(--lc-accent-hover) !important;
+  }
+
+  /* The homepage logo wrapper has an inline blue background in the legacy nav. */
+  nav.lfe-body > div:has(> a.logo-wrap) {
+    background: var(--lc-sidebar) !important;
+    transition: background-color 160ms ease;
+  }
+
+  nav.lfe-body > div:has(> a.logo-wrap):hover {
+    background: var(--lc-brand-blue) !important;
   }
 
   nav.user-nav {
     background: var(--lc-header) !important;
     border-color: var(--lc-border) !important;
     color: var(--lc-text-secondary) !important;
+    --theme-navi-back: var(--lc-header) !important;
+    --theme-navi-fore: var(--lc-text-secondary) !important;
+    --theme-navi-fore-rgb: var(--lc-text-secondary-rgb) !important;
   }
 
   nav.user-nav a,
@@ -162,9 +185,11 @@
   }
 
   nav.user-nav a:hover,
-  nav.user-nav .user-nav-item:hover {
-    background: var(--lc-surface-hover) !important;
-    color: var(--lc-text) !important;
+  nav.user-nav .user-nav-item:hover,
+  nav.user-nav a:focus-visible,
+  nav.user-nav .user-nav-item:focus-visible {
+    background: var(--lc-nav-hover) !important;
+    color: var(--lc-accent-hover) !important;
   }
 
   /* Logged-in shell verified on the current homepage and problem page. */
@@ -174,10 +199,30 @@
     background-image: none !important;
     border-color: var(--lc-border-strong) !important;
     color: var(--lc-text-secondary) !important;
+    --theme-navi-back: var(--lc-header) !important;
+    --theme-navi-fore: var(--lc-text-secondary) !important;
+    --theme-navi-fore-rgb: var(--lc-text-secondary-rgb) !important;
   }
 
   .top-bar {
-    box-shadow: var(--lc-header-shadow) !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    z-index: 100 !important;
+  }
+
+  .top-bar::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    height: 14px;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      var(--lc-modern-header-shadow),
+      transparent
+    );
   }
 
   .wrapper.wrapped.lfe-body.header-layout.tiny {
@@ -204,15 +249,39 @@
   .top-bar a,
   .top-bar .breadcrumb a,
   .top-bar .user-nav a,
-  .top-bar .user-nav .link {
-    color: var(--lc-accent) !important;
+  .top-bar .user-nav .link,
+  .wrapper.wrapped.lfe-body.header-layout.tiny .header-link,
+  .wrapper.wrapped.lfe-body.header-layout.tiny .user-nav a,
+  .wrapper.wrapped.lfe-body.header-layout.tiny .user-nav .link {
+    color: var(--lc-text-secondary) !important;
   }
 
   .top-bar a:hover,
   .top-bar .user-nav a:hover,
-  .top-bar .user-nav .link:hover {
-    background: var(--lc-surface-hover) !important;
+  .top-bar .user-nav .link:hover,
+  .top-bar a:focus-visible,
+  .top-bar .user-nav .link:focus-visible,
+  .wrapper.wrapped.lfe-body.header-layout.tiny .user-nav a:hover,
+  .wrapper.wrapped.lfe-body.header-layout.tiny .user-nav .link:hover,
+  .wrapper.wrapped.lfe-body.header-layout.tiny .user-nav a:focus-visible {
+    background: var(--lc-nav-hover) !important;
     color: var(--lc-accent-hover) !important;
+  }
+
+  .wrapper.wrapped.lfe-body.header-layout.tiny .header-link:hover,
+  .wrapper.wrapped.lfe-body.header-layout.tiny .header-link:focus-visible {
+    background: transparent !important;
+    color: var(--lc-accent-hover) !important;
+  }
+
+  nav.lfe-body > a:not(.logo-wrap),
+  nav.user-nav a,
+  .top-bar .header-link,
+  .top-bar .user-nav .link,
+  .wrapper.wrapped.lfe-body.header-layout.tiny .header-link,
+  .wrapper.wrapped.lfe-body.header-layout.tiny .user-nav a {
+    border-radius: 6px;
+    transition: color 140ms ease, background-color 140ms ease, border-color 140ms ease;
   }
 
   .header-layout .center {
@@ -227,6 +296,14 @@
     background: var(--lc-sidebar) !important;
     border-color: var(--lc-border) !important;
     color: var(--lc-text-secondary) !important;
+    --theme-navi-back: var(--lc-sidebar) !important;
+    --theme-navi-fore: var(--lc-text-secondary) !important;
+    --theme-navi-fore-rgb: var(--lc-text-secondary-rgb) !important;
+  }
+
+  .sidebar.lside {
+    box-shadow: none !important;
+    z-index: 99 !important;
   }
 
   .sidebar.lside li,
@@ -244,15 +321,44 @@
   .user-nav.rside a,
   .user-nav.rside .icon,
   .user-nav.rside .title {
-    color: var(--lc-accent) !important;
+    color: var(--lc-text-secondary) !important;
   }
 
   .sidebar.lside a:hover,
   .sidebar.lside li:hover,
   .user-nav.rside a:hover,
-  .user-nav.rside li:hover {
-    background: var(--lc-surface-hover) !important;
-    color: var(--lc-text) !important;
+  .user-nav.rside li:hover,
+  .sidebar.lside a:focus-visible,
+  .user-nav.rside a:focus-visible {
+    background: var(--lc-nav-hover) !important;
+    color: var(--lc-accent-hover) !important;
+  }
+
+  .sidebar.lside li:hover > a,
+  .sidebar.lside li:hover .icon,
+  .sidebar.lside li:hover .title,
+  .user-nav.rside li:hover > a,
+  .user-nav.rside li:hover .icon,
+  .user-nav.rside li:hover .title,
+  .sidebar.lside a:focus-visible .icon,
+  .sidebar.lside a:focus-visible .title,
+  .user-nav.rside a:focus-visible .icon,
+  .user-nav.rside a:focus-visible .title {
+    color: var(--lc-accent-hover) !important;
+  }
+
+  /* Active entries use an accent text cue; full fills are reserved for hover. */
+  .sidebar.lside a.router-link-active,
+  .user-nav.rside a.router-link-active,
+  .top-bar a.router-link-active {
+    color: var(--lc-accent-hover) !important;
+  }
+
+  .sidebar.lside a.router-link-active .icon,
+  .sidebar.lside a.router-link-active .title,
+  .user-nav.rside a.router-link-active .icon,
+  .user-nav.rside a.router-link-active .title {
+    color: var(--lc-accent-hover) !important;
   }
 
   .search-wrap input,
