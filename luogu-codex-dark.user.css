@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Codex Dark
 @namespace      github.com/physics3r/luogu-codex-dark
-@version        0.2.54
+@version        0.2.59
 @description    Codex-inspired dark theme for Luogu: charcoal surfaces, cool blue-cyan accents, and readable coding states.
 @author         Physics3r
 @homepageURL    https://www.luogu.com.cn/
@@ -50,7 +50,6 @@
     --lc-danger-soft-border: rgba(219, 127, 133, 0.42);
     --lc-danger-text: #f2aeb2;
     --lc-danger-on: #fff0f1;
-
     --lc-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
     --lc-shadow-small: 0 2px 10px rgba(0, 0, 0, 0.18);
     --lc-header-shadow: 0 2px 14px rgba(0, 0, 0, 0.28);
@@ -235,6 +234,28 @@
   .wrapper.wrapped.lfe-body.header-layout.tiny {
     box-shadow: var(--lc-header-shadow) !important;
     z-index: 10;
+  }
+
+  /* The legacy header uses a div.user-nav on /record/list, not nav.user-nav. */
+  .wrapper.wrapped.lfe-body.header-layout .user-nav {
+    background: var(--lc-header) !important;
+    border-color: var(--lc-border) !important;
+    box-shadow: none !important;
+    color: var(--lc-text-secondary) !important;
+  }
+
+  .wrapper.wrapped.lfe-body.header-layout .user-nav > nav > div > a.icon,
+  .wrapper.wrapped.lfe-body.header-layout .user-nav > nav > a.icon-btn,
+  .wrapper.wrapped.lfe-body.header-layout .user-nav > nav > div > a.icon:hover,
+  .wrapper.wrapped.lfe-body.header-layout .user-nav > nav > a.icon-btn:hover,
+  .wrapper.wrapped.lfe-body.header-layout .user-nav > nav > div > a.icon:focus-visible,
+  .wrapper.wrapped.lfe-body.header-layout .user-nav > nav > a.icon-btn:focus-visible {
+    color: var(--lc-text) !important;
+  }
+
+  .wrapper.wrapped.lfe-body.header-layout .user-nav > nav > div > a.icon svg,
+  .wrapper.wrapped.lfe-body.header-layout .user-nav > nav > a.icon-btn svg {
+    color: inherit !important;
   }
 
   /* The homepage has its own gradient layer above the legacy header. */
@@ -934,6 +955,31 @@
     color: var(--lc-text-secondary) !important;
   }
 
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) .search-filter .refined-input.input-wrap.frame {
+    background: transparent !important;
+    border: 0 !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) .search-filter .refined-input.input-wrap.frame input {
+    background: var(--lc-control) !important;
+    border: 1px solid var(--lc-border-strong) !important;
+    color: var(--lc-text) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) .search-filter .refined-input:first-child input {
+    border-radius: 6px 0 0 6px !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) .search-filter .refined-input:nth-child(2) input {
+    border-left: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) .search-filter > button {
+    border-left: 0 !important;
+    border-radius: 0 6px 6px 0 !important;
+  }
+
   main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) .search-input,
   main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) .block,
   main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) .result-count,
@@ -998,21 +1044,15 @@
     color: var(--lc-text-secondary) !important;
   }
 
-  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .row,
-  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .row:hover,
-  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .row-wrap:hover .row {
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .row {
     background: transparent !important;
     border-bottom: 1px solid var(--lc-border) !important;
     color: var(--lc-text-secondary) !important;
-    transition: background-color 140ms ease, color 140ms ease !important;
+    transition: color 140ms ease !important;
   }
 
   main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .row-wrap .row:last-child {
     border-bottom: 0 !important;
-  }
-
-  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .row-wrap:hover .row {
-    background: var(--lc-surface-hover) !important;
   }
 
   main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .row .user a,
@@ -1034,7 +1074,7 @@
   }
 
   main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .status-name {
-    background: var(--lc-surface-raised) !important;
+    background: transparent !important;
     border: 1px solid var(--lc-border-strong) !important;
     border-radius: 4px;
     color: var(--lc-text-secondary) !important;
@@ -1042,9 +1082,14 @@
   }
 
   main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .status-link:has(.status-name[style*="82, 196, 26"]) .status-name {
-    background: var(--lc-success-bg) !important;
+    background: transparent !important;
     border-color: var(--lc-success-border) !important;
-    color: var(--lc-success-on) !important;
+    color: var(--lc-success-text) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .status-link:has(.status-name[style*="82, 196, 26"]):hover .status-name,
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .status-link:has(.status-name[style*="82, 196, 26"]):focus-visible .status-name {
+    background: var(--lc-success-soft) !important;
   }
 
   main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .status-link:has(.status-name[style*="82, 196, 26"]) > span:not(.status-name) {
@@ -1052,9 +1097,14 @@
   }
 
   main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .status-link:has(.status-name[style*="231, 76, 60"]) .status-name {
-    background: var(--lc-danger-bg) !important;
+    background: transparent !important;
     border-color: var(--lc-danger-border) !important;
-    color: var(--lc-danger-on) !important;
+    color: var(--lc-danger-text) !important;
+  }
+
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .status-link:has(.status-name[style*="231, 76, 60"]):hover .status-name,
+  main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .status-link:has(.status-name[style*="231, 76, 60"]):focus-visible .status-name {
+    background: var(--lc-danger-soft) !important;
   }
 
   main.lfe-body.mobile-body .full-container:has(> section > .card.padding-default .search-input) > .card.padding-default .status-link:has(.status-name[style*="231, 76, 60"]) > span:not(.status-name) {
