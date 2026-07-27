@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Codex Dark
 @namespace      github.com/physics3r/luogu-codex-dark
-@version        0.2.45
+@version        0.2.51
 @description    Codex-inspired dark theme for Luogu: charcoal surfaces, cool blue-cyan accents, and readable coding states.
 @author         Physics3r
 @homepageURL    https://www.luogu.com.cn/
@@ -58,7 +58,6 @@
     --lc-sidebar-shadow: 2px 0 14px rgba(0, 0, 0, 0.28);
     --lc-focus-ring: 0 0 0 3px var(--lc-accent-soft);
     --lc-selection: rgba(99, 183, 217, 0.32);
-    --lc-overlay: rgba(0, 0, 0, 0.72);
     --lc-scrollbar: #3a4149;
     --lc-scrollbar-hover: #515b66;
     --lc-control: #1b1e22;
@@ -90,9 +89,7 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
   }
 
-  #app,
-  #app.lfe-vars,
-  #app.lfe-body {
+  #app {
     background: var(--lc-canvas) !important;
     color: var(--lc-text) !important;
   }
@@ -146,14 +143,11 @@
 
   nav.lfe-body a,
   nav.lfe-body .color-none,
-  nav.lfe-body li,
-  nav.lfe-body .lfe-caption,
   nav.lfe-body .popup-button {
     color: var(--lc-text-secondary) !important;
   }
 
   nav.lfe-body > a:not(.logo-wrap):hover,
-  nav.lfe-body li:hover,
   nav.lfe-body > a:not(.logo-wrap):focus-visible {
     background: var(--lc-nav-hover) !important;
     color: var(--lc-accent-hover) !important;
@@ -179,15 +173,12 @@
   }
 
   nav.user-nav a,
-  nav.user-nav .user-nav-item,
   nav.user-nav .search-wrap {
     color: var(--lc-text-secondary) !important;
   }
 
   nav.user-nav a:hover,
-  nav.user-nav .user-nav-item:hover,
-  nav.user-nav a:focus-visible,
-  nav.user-nav .user-nav-item:focus-visible {
+  nav.user-nav a:focus-visible {
     background: var(--lc-nav-hover) !important;
     color: var(--lc-accent-hover) !important;
   }
@@ -238,7 +229,6 @@
 
   .top-bar .left,
   .top-bar .right,
-  .top-bar .breadcrumb,
   .top-bar .user-nav,
   .top-bar .nav-search,
   .top-bar .search-wrap,
@@ -247,22 +237,17 @@
   }
 
   .top-bar a,
-  .top-bar .breadcrumb a,
-  .top-bar .user-nav a,
   .top-bar .user-nav .link,
   .wrapper.wrapped.lfe-body.header-layout.tiny .header-link,
-  .wrapper.wrapped.lfe-body.header-layout.tiny .user-nav a,
-  .wrapper.wrapped.lfe-body.header-layout.tiny .user-nav .link {
+  .wrapper.wrapped.lfe-body.header-layout.tiny .user-nav a {
     color: var(--lc-text-secondary) !important;
   }
 
   .top-bar a:hover,
-  .top-bar .user-nav a:hover,
   .top-bar .user-nav .link:hover,
   .top-bar a:focus-visible,
   .top-bar .user-nav .link:focus-visible,
   .wrapper.wrapped.lfe-body.header-layout.tiny .user-nav a:hover,
-  .wrapper.wrapped.lfe-body.header-layout.tiny .user-nav .link:hover,
   .wrapper.wrapped.lfe-body.header-layout.tiny .user-nav a:focus-visible {
     background: transparent !important;
     color: var(--lc-accent-hover) !important;
@@ -277,20 +262,11 @@
   nav.lfe-body > a:not(.logo-wrap),
   nav.user-nav a,
   .top-bar .logo-link,
-  .top-bar .breadcrumb a,
-  .top-bar .header-link,
   .top-bar .user-nav .link,
   .wrapper.wrapped.lfe-body.header-layout.tiny .header-link,
   .wrapper.wrapped.lfe-body.header-layout.tiny .user-nav a {
     border-radius: 6px;
     transition: color 240ms ease-out, background-color 240ms ease-out, border-color 240ms ease-out;
-  }
-
-  .top-bar .breadcrumb a,
-  .top-bar .breadcrumb a:hover,
-  .top-bar .breadcrumb a:focus-visible {
-    background: transparent !important;
-    transition: color 240ms ease-out !important;
   }
 
   .top-bar .logo-link:hover,
@@ -357,7 +333,13 @@
   .sidebar.lside a,
   .user-nav.rside a {
     color: var(--lc-text-secondary) !important;
-    transition: color 240ms ease-out !important;
+    filter: none !important;
+    transition: color 160ms ease-out !important;
+  }
+
+  .sidebar.lside li:hover,
+  .user-nav.rside li:hover {
+    background: transparent !important;
   }
 
   .sidebar.lside a .icon,
@@ -373,36 +355,17 @@
   .sidebar.lside a:hover,
   .user-nav.rside a:hover,
   .sidebar.lside a:focus-visible,
-  .user-nav.rside a:focus-visible,
-  .sidebar.lside li:hover > a,
-  .user-nav.rside li:hover > a {
+  .user-nav.rside a:focus-visible {
     background: transparent !important;
-    color: var(--lc-accent-hover) !important;
+    color: var(--lc-accent) !important;
+    filter: none !important;
   }
 
-  /* Active entries use a darker accent so hovering them still has a visible transition. */
+  /* Current-route entries stay stable instead of replaying the hover transition. */
   .sidebar.lside a.router-link-active,
   .user-nav.rside a.router-link-active,
   .top-bar a.router-link-active {
     color: var(--lc-accent) !important;
-  }
-
-  .sidebar.lside a.router-link-active .icon,
-  .sidebar.lside a.router-link-active .title,
-  .user-nav.rside a.router-link-active .icon,
-  .user-nav.rside a.router-link-active .title {
-    color: inherit !important;
-  }
-
-  /* Keep the current breadcrumb visibly different before and during hover. */
-  .top-bar .breadcrumb a.router-link-active {
-    color: var(--lc-accent) !important;
-    transition: color 240ms ease-out !important;
-  }
-
-  .top-bar .breadcrumb a.router-link-active:hover,
-  .top-bar .breadcrumb a.router-link-active:focus-visible {
-    color: var(--lc-accent-hover) !important;
   }
 
   .search-wrap input,
@@ -444,10 +407,7 @@
     border-color: var(--lc-accent) !important;
   }
 
-  .filter-section .text.lform-size-middle input,
-  .filter-section .refined-input.search-text input,
-  .filter-section .text.lform-size-middle button,
-  .filter-section .refined-input.search-text button {
+  .filter-section .refined-input.search-text input {
     background: transparent !important;
     border-color: transparent !important;
     color: var(--lc-text) !important;
@@ -616,7 +576,6 @@
   }
 
   #lg-slider,
-  #lg-slider.am-slider,
   #lg-slider .am-viewport,
   #lg-slider .am-slides {
     background: var(--lc-surface) !important;
@@ -793,18 +752,14 @@
   }
 
   /* 05. Problem page */
-  /* New problem-page components verified on /problem/P5318. */
+  /* Problem-page components verified on /problem/P1000. */
   .columba-content-wrap,
-  .columba-content-wrap.main-content,
   .header-layout,
   .sidebar-container.reverse.layout {
     color: var(--lc-text-secondary) !important;
   }
 
-  .l-card,
-  .l-card.header-card,
-  .l-card.problem,
-  .sidebar-container .l-card {
+  .l-card {
     background: var(--lc-surface) !important;
     border: 1px solid var(--lc-border) !important;
     border-radius: var(--lc-radius) !important;
@@ -865,9 +820,7 @@
     color: var(--lc-text) !important;
   }
 
-  .l-card.problem hr,
-  .l-card hr,
-  .l-card.header-card hr {
+  .l-card hr {
     border-color: var(--lc-border) !important;
   }
 
@@ -878,19 +831,12 @@
     #app-old,
     .columba-content-wrap,
     nav,
-    .el-overlay,
-    .modal-backdrop,
-    .modal-content,
-    .el-dialog,
-    .el-message-box
+    .modal
   ) :where(
     input:not([type="checkbox"]):not([type="radio"]),
     textarea,
     select,
-    .am-form-field,
-    .form-control,
-    .el-input__inner,
-    .el-textarea__inner
+    .am-form-field
   ) {
     background: var(--lc-control) !important;
     border: 1px solid var(--lc-border-strong) !important;
@@ -904,19 +850,12 @@
     #app-old,
     .columba-content-wrap,
     nav,
-    .el-overlay,
-    .modal-backdrop,
-    .modal-content,
-    .el-dialog,
-    .el-message-box
+    .modal
   ) :where(
     input:not([type="checkbox"]):not([type="radio"]):focus,
     textarea:focus,
     select:focus,
-    .am-form-field:focus,
-    .form-control:focus,
-    .el-input__inner:focus,
-    .el-textarea__inner:focus
+    .am-form-field:focus
   ) {
     border-color: var(--lc-accent) !important;
     box-shadow: var(--lc-focus-ring) !important;
@@ -928,16 +867,10 @@
     #app-old,
     .columba-content-wrap,
     nav,
-    .el-overlay,
-    .modal-backdrop,
-    .modal-content,
-    .el-dialog,
-    .el-message-box
+    .modal
   ) :where(
     input,
-    textarea,
-    .el-input__inner,
-    .el-textarea__inner
+    textarea
   )::placeholder {
     color: var(--lc-text-muted) !important;
   }
@@ -947,11 +880,7 @@
     #app-old,
     .columba-content-wrap,
     nav,
-    .el-overlay,
-    .modal-backdrop,
-    .modal-content,
-    .el-dialog,
-    .el-message-box
+    .modal
   ) :where(option, optgroup) {
     background: var(--lc-surface) !important;
     color: var(--lc-text) !important;
@@ -962,19 +891,13 @@
     #app-old,
     .columba-content-wrap,
     nav,
-    .el-overlay,
-    .modal-backdrop,
-    .modal-content,
-    .el-dialog,
-    .el-message-box
+    .modal
   ) :where(
     button,
     input[type="button"],
     input[type="submit"],
     input[type="reset"],
-    .am-btn,
-    .btn,
-    .el-button
+    .am-btn
   ) {
     background: var(--lc-surface-raised) !important;
     border: 1px solid var(--lc-border-strong) !important;
@@ -988,19 +911,13 @@
     #app-old,
     .columba-content-wrap,
     nav,
-    .el-overlay,
-    .modal-backdrop,
-    .modal-content,
-    .el-dialog,
-    .el-message-box
+    .modal
   ) :where(
     button:hover,
     input[type="button"]:hover,
     input[type="submit"]:hover,
     input[type="reset"]:hover,
-    .am-btn:hover,
-    .btn:hover,
-    .el-button:hover
+    .am-btn:hover
   ) {
     background: var(--lc-surface-hover) !important;
     border-color: var(--lc-accent) !important;
@@ -1012,17 +929,9 @@
     #app-old,
     .columba-content-wrap,
     nav,
-    .el-overlay,
-    .modal-backdrop,
-    .modal-content,
-    .el-dialog,
-    .el-message-box
+    .modal
   ) :where(
-    .am-btn-primary,
-    .btn-primary,
-    .el-button--primary,
-    button.primary,
-    .button.primary
+    .am-btn-primary
   ) {
     background: var(--lc-primary-bg) !important;
     border-color: var(--lc-primary-border) !important;
@@ -1034,17 +943,9 @@
     #app-old,
     .columba-content-wrap,
     nav,
-    .el-overlay,
-    .modal-backdrop,
-    .modal-content,
-    .el-dialog,
-    .el-message-box
+    .modal
   ) :where(
-    .am-btn-success,
-    .btn-success,
-    .el-button--success,
-    button.success,
-    .button.success
+    .am-btn-success
   ) {
     background: var(--lc-success-bg) !important;
     border-color: var(--lc-success-border) !important;
@@ -1056,17 +957,9 @@
     #app-old,
     .columba-content-wrap,
     nav,
-    .el-overlay,
-    .modal-backdrop,
-    .modal-content,
-    .el-dialog,
-    .el-message-box
+    .modal
   ) :where(
-    .am-btn-danger,
-    .btn-danger,
-    .el-button--danger,
-    button.danger,
-    .button.danger
+    .am-btn-danger
   ) {
     background: var(--lc-danger-bg) !important;
     border-color: var(--lc-danger-border) !important;
@@ -1076,10 +969,7 @@
   /* Tables, lists, tabs, menus, dialogs, and popovers. */
   :is(#app, #app-old, .columba-content-wrap, nav) :where(
     table,
-    .table,
-    .el-table,
-    .el-table__body-wrapper,
-    .el-table__header-wrapper
+    .table
   ) {
     background: var(--lc-surface) !important;
     color: var(--lc-text-secondary) !important;
@@ -1087,28 +977,20 @@
 
   :is(#app, #app-old, .columba-content-wrap, nav) :where(
     th,
-    td,
-    .table th,
-    .table td,
-    .el-table th,
-    .el-table td
+    td
   ) {
     border-color: var(--lc-border) !important;
   }
 
   :is(#app, #app-old, .columba-content-wrap, nav) :where(
-    thead,
-    .el-table th,
-    .el-table__header-wrapper
+    thead
   ) {
     background: var(--lc-surface-raised) !important;
     color: var(--lc-text) !important;
   }
 
   :is(#app, #app-old, .columba-content-wrap, nav) :where(
-    tbody tr:hover,
-    .table-hover tbody tr:hover,
-    .el-table__body tr:hover > td
+    tbody tr:hover
   ) {
     background: var(--lc-surface-hover) !important;
   }
@@ -1116,59 +998,32 @@
   .am-tabs,
   .am-tabs-bd,
   .am-tabs-nav,
-  .el-tabs__nav-wrap,
-  .el-tabs__content,
-  .el-menu,
-  .dropdown-menu,
   .am-dropdown-content,
   .popover,
-  .tooltip-inner,
-  .modal-content,
-  .el-dialog,
-  .el-message-box {
+  .tooltip-inner {
     background: var(--lc-surface) !important;
     border-color: var(--lc-border) !important;
     color: var(--lc-text-secondary) !important;
   }
 
-  .am-tabs-nav,
-  .el-tabs__nav-wrap,
-  .el-menu-item:hover,
-  .dropdown-menu > li > a:hover {
+  .am-tabs-nav {
     background: var(--lc-surface-raised) !important;
   }
 
-  .am-tabs-nav a,
-  .el-tabs__item,
-  .el-menu-item,
-  .dropdown-menu > li > a {
+  .am-tabs-nav a {
     color: var(--lc-text-secondary) !important;
   }
 
-  .am-tabs-nav .am-active a,
-  .el-tabs__item.is-active,
-  .el-tabs__active-bar {
+  .am-tabs-nav .am-active a {
     color: var(--lc-accent) !important;
     border-color: var(--lc-accent) !important;
   }
 
-  .modal-backdrop,
-  .el-overlay {
-    background: var(--lc-overlay) !important;
-  }
-
-  /* Markdown, statements, editors, and evaluation output. */
+  /* Markdown, statements, and evaluation output. */
   :is(#app, #app-old, .columba-content-wrap, nav) :where(
     pre,
     code,
-    .code,
-    .markdown-body pre,
-    .markdown-body code,
-    .l-card.problem pre,
-    .l-card.problem code,
-    .CodeMirror,
-    .cm-editor,
-    .monaco-editor
+    .code
   ) {
     background: var(--lc-code) !important;
     border-color: var(--lc-border) !important;
@@ -1176,26 +1031,21 @@
   }
 
   :is(#app, #app-old, .columba-content-wrap, nav) :where(
-    pre,
-    .markdown-body pre,
-    .l-card.problem pre
+    pre
   ) {
     border: 1px solid var(--lc-border) !important;
     border-radius: 6px !important;
   }
 
   :is(#app, #app-old, .columba-content-wrap, nav) :where(
-    pre code,
-    .markdown-body pre code,
-    .l-card.problem pre code
+    pre code
   ) {
     background: transparent !important;
     border: 0 !important;
   }
 
   :is(#app, #app-old, .columba-content-wrap, nav) :where(
-    blockquote,
-    .markdown-body blockquote
+    blockquote
   ) {
     background: var(--lc-surface-raised) !important;
     border-left-color: var(--lc-accent) !important;
@@ -1241,66 +1091,50 @@
     color: var(--lc-text-muted) !important;
   }
 
-  .am-alert,
-  .alert,
-  .el-alert {
+  .am-alert {
     background: var(--lc-surface-raised) !important;
     border-color: var(--lc-border) !important;
     color: var(--lc-text-secondary) !important;
   }
 
-  .am-alert-primary,
-  .alert-info,
-  .el-alert--info {
+  .am-alert-primary {
     background: var(--lc-accent-soft) !important;
     border-color: var(--lc-accent-border) !important;
     color: var(--lc-accent-hover) !important;
   }
 
-  .am-alert-success,
-  .alert-success,
-  .el-alert--success {
+  .am-alert-success {
     background: var(--lc-success-soft) !important;
     border-color: var(--lc-success-soft-border) !important;
     color: var(--lc-success-text) !important;
   }
 
-  .am-alert-warning,
-  .alert-warning,
-  .el-alert--warning {
+  .am-alert-warning {
     background: var(--lc-warning-soft) !important;
     border-color: var(--lc-warning-border) !important;
     color: var(--lc-warning-text) !important;
   }
 
-  .am-alert-danger,
-  .alert-danger,
-  .el-alert--error {
+  .am-alert-danger {
     background: var(--lc-danger-soft) !important;
     border-color: var(--lc-danger-soft-border) !important;
     color: var(--lc-danger-text) !important;
   }
 
   .am-badge,
-  .badge,
-  .el-tag,
   .lfe-tag {
     background: var(--lc-surface-raised) !important;
     border: 1px solid var(--lc-border) !important;
     color: var(--lc-text-secondary) !important;
   }
 
-  .am-badge-primary,
-  .badge-primary,
-  .el-tag--info {
+  .am-badge-primary {
     background: var(--lc-accent-soft) !important;
     border-color: var(--lc-accent-border) !important;
     color: var(--lc-accent-hover) !important;
   }
 
-  .am-badge-success,
-  .badge-success,
-  .el-tag--success {
+  .am-badge-success {
     background: var(--lc-success-soft) !important;
     border-color: var(--lc-success-soft-border) !important;
     color: var(--lc-success-text) !important;
@@ -1325,12 +1159,8 @@
       #app-old,
       .columba-content-wrap,
       nav,
-      .el-overlay,
-      .modal-backdrop,
-      .modal-content,
-      .el-dialog,
-      .el-message-box
-    ) :where(.l-card.problem pre, pre) {
+      .modal
+    ) :where(pre) {
       max-width: 100%;
       overflow-x: auto;
     }
