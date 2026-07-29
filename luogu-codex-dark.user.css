@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Dark Palette Experiment
 @namespace      github.com/physics3r/luogu-dark-theme
-@version        0.1.1
+@version        0.1.5
 @description    Global dark palette and shared component override experiment for Luogu.
 @author         Physics3r
 ==/UserStyle== */
@@ -41,6 +41,18 @@
     --lct-danger-soft: rgba(219, 127, 133, 0.16);
     --lct-danger-border: rgba(219, 127, 133, 0.42);
     --lct-shadow: 0 2px 12px rgba(0, 0, 0, 0.24);
+    --lct-shadow-nav: 2px 0 14px rgba(0, 0, 0, 0.28);
+    --lct-shadow-header: 0 2px 14px rgba(0, 0, 0, 0.28);
+    --lct-shadow-float: 0 -3px 12px rgba(0, 0, 0, 0.24);
+    --lct-highcharts-shadow: rgba(0, 0, 0, 0.34);
+    --lct-selection-background: rgba(99, 183, 217, 0.32);
+    --lct-text-on-accent: #ffffff;
+    --lct-scrollbar-hover: #59636f;
+    --lct-button-primary: #347b9e;
+    --lct-button-success: #35664c;
+    --lct-button-success-text: #eafff1;
+    --lct-button-danger: #713b42;
+    --lct-button-danger-text: #fff0f1;
     --lct-focus-ring: 0 0 0 3px var(--lct-accent-soft);
 
     /* Low-saturation blue-cyan */
@@ -290,8 +302,8 @@
   }
 
   ::selection {
-    background: rgba(99, 183, 217, 0.32);
-    color: #ffffff;
+    background: var(--lct-selection-background);
+    color: var(--lct-text-on-accent);
   }
 
   ::-webkit-scrollbar {
@@ -310,7 +322,7 @@
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #59636f;
+    background: var(--lct-scrollbar-hover);
   }
 
   /* Navigation and application shells */
@@ -332,11 +344,11 @@
   }
 
   nav.lfe-body {
-    box-shadow: 2px 0 14px rgba(0, 0, 0, 0.28) !important;
+    box-shadow: var(--lct-shadow-nav) !important;
   }
 
   .wrapper.wrapped.lfe-body.header-layout.tiny {
-    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.28) !important;
+    box-shadow: var(--lct-shadow-header) !important;
   }
 
   nav.lfe-body > div:has(> a.logo-wrap) {
@@ -548,25 +560,25 @@
   ) {
     background: var(--lct-surface-hover) !important;
     border-color: var(--lct-blue-3) !important;
-    color: #ffffff !important;
+    color: var(--lct-text-on-accent) !important;
   }
 
   :is(#app, #app-old, .columba-content-wrap, nav, .modal) .am-btn-primary {
-    background: #347b9e !important;
+    background: var(--lct-button-primary) !important;
     border-color: var(--lct-blue-2) !important;
-    color: #ffffff !important;
+    color: var(--lct-text-on-accent) !important;
   }
 
   :is(#app, #app-old, .columba-content-wrap, nav, .modal) .am-btn-success {
-    background: #35664c !important;
+    background: var(--lct-button-success) !important;
     border-color: var(--lct-green-2) !important;
-    color: #eafff1 !important;
+    color: var(--lct-button-success-text) !important;
   }
 
   :is(#app, #app-old, .columba-content-wrap, nav, .modal) .am-btn-danger {
-    background: #713b42 !important;
+    background: var(--lct-button-danger) !important;
     border-color: var(--lct-red-2) !important;
-    color: #fff0f1 !important;
+    color: var(--lct-button-danger-text) !important;
   }
 
   /* Tables and code */
@@ -744,10 +756,151 @@
     color: var(--lct-text-secondary) !important;
   }
 
-  /* Highcharts labels and axes */
+  /* Problem list controls, rows, and semantic badges */
+  .columba-content-wrap.main-content .l-card .title.no-wrap {
+    color: var(--lct-text-secondary) !important;
+  }
+
+  .columba-content-wrap.main-content .filter-section .combo-wrapper .text,
+  .columba-content-wrap.main-content .filter-section .tag-button,
+  .columba-content-wrap.main-content .filter-section .refined-input.search-text {
+    background: var(--lct-control) !important;
+    border-color: var(--lct-border-strong) !important;
+    color: var(--lct-text) !important;
+  }
+
+  .columba-content-wrap.main-content .filter-section .placeholder,
+  .columba-content-wrap.main-content .filter-section .search-icon {
+    color: var(--lct-text-muted) !important;
+  }
+
+  .columba-content-wrap.main-content .filter-section .search-icon {
+    fill: var(--lct-text-muted) !important;
+  }
+
+  .columba-content-wrap.main-content .filter-section .search-icon path {
+    fill: var(--lct-text-muted) !important;
+  }
+
+  .columba-content-wrap.main-content .result .count,
+  .columba-content-wrap.main-content .bottom-wrap.float .count {
+    color: var(--lct-text-muted) !important;
+  }
+
+  .columba-content-wrap.main-content .list-wrap.table .header-wrap {
+    background: var(--lct-surface-raised) !important;
+    border-bottom-color: var(--lct-border-strong) !important;
+    color: var(--lct-text) !important;
+  }
+
+  .columba-content-wrap.main-content .list-wrap.table .row {
+    border-bottom: 1px solid var(--lct-border) !important;
+    color: var(--lct-text-secondary) !important;
+  }
+
+  .columba-content-wrap.main-content .list-wrap.table .row:hover {
+    background: var(--lct-surface-hover) !important;
+  }
+
+  .columba-content-wrap.main-content .list-wrap .tags span[style*="background-color: rgb(19, 194, 194)"] {
+    background: var(--lct-cyan-1) !important;
+    border-color: var(--lct-cyan-2) !important;
+    color: var(--lct-cyan-5) !important;
+  }
+
+  .columba-content-wrap.main-content .list-wrap .tags span[style*="background-color: rgb(52, 152, 219)"] {
+    background: var(--lct-blue-1) !important;
+    border-color: var(--lct-blue-2) !important;
+    color: var(--lct-blue-5) !important;
+  }
+
+  .columba-content-wrap.main-content .list-wrap .difficulty span[style*="background-color: rgb(254, 76, 97)"] {
+    background: var(--lct-red-1) !important;
+    border-color: var(--lct-red-2) !important;
+    color: var(--lct-red-5) !important;
+  }
+
+  .columba-content-wrap.main-content .list-wrap .difficulty span[style*="background-color: rgb(243, 156, 17)"] {
+    background: var(--lct-orange-1) !important;
+    border-color: var(--lct-orange-2) !important;
+    color: var(--lct-orange-5) !important;
+  }
+
+  .columba-content-wrap.main-content .list-wrap .difficulty span[style*="background-color: rgb(83, 196, 26)"] {
+    background: var(--lct-green-1) !important;
+    border-color: var(--lct-green-2) !important;
+    color: var(--lct-green-5) !important;
+  }
+
+  .columba-content-wrap.main-content .list-wrap .difficulty span[style*="background-color: rgb(255, 193, 22)"] {
+    background: var(--lct-yellow-1) !important;
+    border-color: var(--lct-yellow-2) !important;
+    color: var(--lct-yellow-5) !important;
+  }
+
+  .columba-content-wrap.main-content .list-wrap .difficulty span[style*="background-color: rgb(19, 194, 194)"] {
+    background: var(--lct-cyan-1) !important;
+    border-color: var(--lct-cyan-2) !important;
+    color: var(--lct-cyan-5) !important;
+  }
+
+  .columba-content-wrap.main-content .list-wrap .progress-frame {
+    background: var(--lct-border) !important;
+    border-color: var(--lct-border) !important;
+  }
+
+  .columba-content-wrap.main-content .list-wrap .progress-frame .square {
+    background: var(--lct-blue-3) !important;
+  }
+
+  .columba-content-wrap.main-content .bottom-wrap.float {
+    background: var(--lct-surface) !important;
+    border-top: 1px solid var(--lct-border) !important;
+    box-shadow: var(--lct-shadow-float) !important;
+    color: var(--lct-text-secondary) !important;
+  }
+
+  .columba-content-wrap.main-content .bottom-wrap.float button {
+    background: var(--lct-surface-raised) !important;
+    border-color: var(--lct-border-strong) !important;
+    color: var(--lct-text) !important;
+  }
+
+  .columba-content-wrap.main-content .bottom-wrap.float button:is(:hover, :focus-visible) {
+    background: var(--lct-surface-hover) !important;
+    border-color: var(--lct-blue-3) !important;
+    color: var(--lct-blue-4) !important;
+  }
+
+  /* Homepage fortune */
+  .lg-punch .lg-fg-red {
+    color: var(--lct-red-3) !important;
+  }
+
+  /* Homepage calendar */
+  .lg-index-calendar.lg-fg-greendark {
+    color: var(--lct-green-4) !important;
+  }
+
+  /* Highcharts labels, axes, and tooltip */
   .highcharts-root text,
   .highcharts-root tspan {
     fill: var(--lct-text-secondary) !important;
+  }
+
+  .highcharts-root .highcharts-tooltip-box:not(.highcharts-shadow) {
+    fill: var(--lct-surface-raised) !important;
+    stroke: var(--lct-border-strong) !important;
+  }
+
+  .highcharts-root .highcharts-tooltip-box.highcharts-shadow {
+    stroke: var(--lct-highcharts-shadow) !important;
+  }
+
+  .highcharts-root .highcharts-tooltip text,
+  .highcharts-root .highcharts-tooltip tspan {
+    color: var(--lct-text) !important;
+    fill: var(--lct-text) !important;
   }
 
   .highcharts-root .highcharts-title {
