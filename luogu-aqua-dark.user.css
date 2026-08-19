@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Dark Palette Experiment
 @namespace      github.com/physics3r/luogu-dark-theme
-@version        0.1.5
+@version        0.1.12
 @description    Global dark palette and shared component override experiment for Luogu.
 @author         Physics3r
 ==/UserStyle== */
@@ -27,6 +27,24 @@
     --lct-control: #1b1e22;
     --lct-code: #151719;
     --lct-code-text: #d7dde5;
+    --lct-code-comment: var(--lct-text-muted);
+    --lct-code-keyword: var(--lct-purple-4);
+    --lct-code-atom: var(--lct-blue-4);
+    --lct-code-literal: var(--lct-green-4);
+    --lct-code-string: var(--lct-orange-4);
+    --lct-code-regexp: var(--lct-orange-3);
+    --lct-code-definition: var(--lct-blue-4);
+    --lct-code-local: var(--lct-code-text);
+    --lct-code-type: var(--lct-cyan-4);
+    --lct-code-class: var(--lct-gold-4);
+    --lct-code-special: var(--lct-purple-4);
+    --lct-code-property: var(--lct-blue-3);
+    --lct-code-invalid: var(--lct-red-4);
+    --lct-code-selection: rgba(99, 183, 217, 0.26);
+    --lct-code-active-line: rgba(112, 189, 193, 0.08);
+    --lct-gutter: #1b1f24;
+    --lct-gutter-text: #6f7a86;
+    --lct-gutter-active-text: var(--lct-blue-4);
     --lct-nav-hover: #29333b;
     --lct-accent-soft: rgba(99, 183, 217, 0.16);
     --lct-accent-border: rgba(99, 183, 217, 0.42);
@@ -47,6 +65,7 @@
     --lct-highcharts-shadow: rgba(0, 0, 0, 0.34);
     --lct-selection-background: rgba(99, 183, 217, 0.32);
     --lct-text-on-accent: #ffffff;
+    --lct-text-on-bright-accent: var(--lct-header);
     --lct-scrollbar-hover: #59636f;
     --lct-button-primary: #347b9e;
     --lct-button-success: #35664c;
@@ -295,6 +314,7 @@
 
   a {
     color: var(--lct-blue-3) !important;
+    transition: none !important;
   }
 
   a:is(:hover, :focus-visible) {
@@ -761,6 +781,10 @@
     color: var(--lct-text-secondary) !important;
   }
 
+  .columba-content-wrap.main-content .l-card > section:first-child li.selected {
+    color: var(--lct-text-on-bright-accent) !important;
+  }
+
   .columba-content-wrap.main-content .filter-section .combo-wrapper .text,
   .columba-content-wrap.main-content .filter-section .tag-button,
   .columba-content-wrap.main-content .filter-section .refined-input.search-text {
@@ -787,8 +811,12 @@
     color: var(--lct-text-muted) !important;
   }
 
+  .columba-content-wrap.main-content .result .count .number {
+    color: var(--lct-text) !important;
+  }
+
   .columba-content-wrap.main-content .list-wrap.table .header-wrap {
-    background: var(--lct-surface-raised) !important;
+    background: transparent !important;
     border-bottom-color: var(--lct-border-strong) !important;
     color: var(--lct-text) !important;
   }
@@ -870,6 +898,177 @@
     background: var(--lct-surface-hover) !important;
     border-color: var(--lct-blue-3) !important;
     color: var(--lct-blue-4) !important;
+  }
+
+  /* IDE mode: the editor is CodeMirror 6 inside the panel that contains .cm-editor. */
+  .lfe-body .ide-container .ide-toolbar {
+    background: var(--lct-surface) !important;
+    border-bottom-color: var(--lct-border) !important;
+    color: var(--lct-text-secondary) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .lang-select,
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .lang-select .text {
+    background: var(--lct-control) !important;
+    border-color: var(--lct-border-strong) !important;
+    color: var(--lct-text) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .lang-select .arrow {
+    color: var(--lct-text-muted) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .lang-select .arrow path {
+    fill: currentColor !important;
+  }
+
+  .lfe-body:has(.ide-container .cm-editor) > .dropdown:has(> ul > li) {
+    background: var(--lct-surface-raised) !important;
+    border: 1px solid var(--lct-border-strong) !important;
+    box-shadow: var(--lct-shadow) !important;
+    color: var(--lct-text) !important;
+  }
+
+  .lfe-body:has(.ide-container .cm-editor) > .dropdown:has(> ul > li) li {
+    background: transparent !important;
+    color: var(--lct-text-secondary) !important;
+  }
+
+  .lfe-body:has(.ide-container .cm-editor) > .dropdown:has(> ul > li) li:is(:hover, :focus-visible, .selected, [aria-selected="true"]) {
+    background: var(--lct-surface-hover) !important;
+    color: var(--lct-blue-4) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .actions > div:has(> input[type="checkbox"]),
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .actions > div:has(> input[type="checkbox"]) label {
+    color: var(--lct-text-secondary) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .actions > div:has(> input[type="checkbox"]) input[type="checkbox"] {
+    accent-color: var(--lct-blue-3) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .actions > div:has(> input[type="checkbox"]) label .fa-input {
+    color: var(--lct-blue-3) !important;
+    fill: var(--lct-blue-3) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-editor {
+    background: var(--lct-code) !important;
+    border-color: var(--lct-border) !important;
+    color: var(--lct-code-text) !important;
+    color-scheme: dark !important;
+    caret-color: var(--lct-blue-4) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-scroller {
+    background: var(--lct-code) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content,
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-line {
+    color: var(--lct-code-text) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-gutters {
+    background: var(--lct-gutter) !important;
+    background-image: none !important;
+    border-right: 1px solid var(--lct-border) !important;
+    color: var(--lct-gutter-text) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-gutter,
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-gutterElement {
+    background: transparent !important;
+    color: var(--lct-gutter-text) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-lineNumbers .cm-gutterElement {
+    box-sizing: border-box;
+    min-width: 2.5em;
+    padding: 0 0.75em 0 0.5em !important;
+    text-align: right;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-activeLine {
+    background: var(--lct-code-active-line) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-activeLineGutter {
+    background: var(--lct-surface-hover) !important;
+    color: var(--lct-gutter-active-text) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-selectionBackground,
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content ::selection {
+    background: var(--lct-code-selection) !important;
+  }
+
+  /* Current Luogu C++ mode uses CodeMirror's generated ͼ* token classes. */
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼb, .tok-keyword, .cm-keyword) {
+    color: var(--lct-code-keyword) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼc, .tok-atom, .tok-bool, .tok-url, .tok-contentSeparator, .tok-labelName, .cm-atom, .cm-builtin) {
+    color: var(--lct-code-atom) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼd, .tok-literal, .tok-inserted) {
+    color: var(--lct-code-literal) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼe, .tok-string, .tok-deleted, .cm-string) {
+    color: var(--lct-code-string) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼf, .tok-regexp, .tok-escape, .tok-special, .cm-string-2) {
+    color: var(--lct-code-regexp) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼg, .tok-definition, .tok-definitionKeyword, .cm-def) {
+    color: var(--lct-code-definition) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼh, .tok-local) {
+    color: var(--lct-code-local) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼi, .tok-typeName, .tok-namespace, .cm-type) {
+    color: var(--lct-code-type) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼj, .tok-className, .cm-tag) {
+    color: var(--lct-code-class) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼk, .tok-macroName, .tok-moduleKeyword, .cm-meta) {
+    color: var(--lct-code-special) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼl, .tok-propertyName, .cm-property) {
+    color: var(--lct-code-property) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼm, .tok-comment, .cm-comment) {
+    color: var(--lct-code-comment) !important;
+    font-style: italic;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼn, .tok-invalid, .cm-error) {
+    background: var(--lct-danger-soft) !important;
+    color: var(--lct-code-invalid) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .actions > button.solid {
+    background: var(--lct-button-primary) !important;
+    border-color: var(--lct-blue-2) !important;
+    color: var(--lct-text-on-accent) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .actions > button.solid:is(:hover, :focus-visible) {
+    background: var(--lct-blue-2) !important;
+    border-color: var(--lct-blue-3) !important;
+    color: var(--lct-text-on-accent) !important;
   }
 
   /* Homepage fortune */
