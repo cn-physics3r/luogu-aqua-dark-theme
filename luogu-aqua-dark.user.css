@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Dark Palette Experiment
 @namespace      github.com/physics3r/luogu-dark-theme
-@version        0.1.24
+@version        0.1.25
 @description    Global dark palette and shared component override experiment for Luogu.
 @author         Physics3r
 ==/UserStyle== */
@@ -53,9 +53,7 @@
     --lct-warning-soft: rgba(212, 174, 104, 0.16);
     --lct-warning-border: rgba(212, 174, 104, 0.42);
     --lct-orange-soft: rgba(220, 152, 104, 0.16);
-    --lct-orange-border: rgba(220, 152, 104, 0.42);
     --lct-purple-soft: rgba(169, 139, 208, 0.16);
-    --lct-purple-border: rgba(169, 139, 208, 0.42);
     --lct-danger-soft: rgba(219, 127, 133, 0.16);
     --lct-danger-border: rgba(219, 127, 133, 0.42);
     --lct-shadow: 0 2px 12px rgba(0, 0, 0, 0.24);
@@ -320,7 +318,6 @@
 
   a {
     color: var(--lct-blue-3) !important;
-    transition: none !important;
   }
 
   a:is(:hover, :focus-visible) {
@@ -428,6 +425,20 @@
     background-color: var(--lct-surface) !important;
     border-color: var(--lct-border) !important;
     color: var(--lct-text-secondary) !important;
+  }
+
+  :where(
+    .lg-article,
+    .am-panel,
+    .am-comment-main,
+    .card,
+    .l-card,
+    .am-dropdown-content,
+    .am-selected-content,
+    .am-modal-dialog,
+    .popover,
+    .tooltip-inner
+  ) {
     box-shadow: var(--lct-shadow) !important;
   }
 
@@ -437,20 +448,20 @@
     border-color: var(--lct-border) !important;
   }
 
-  /* Luogu's shared fixed dropdown is rendered directly under #app.lfe-body. */
-  .lfe-body > .dropdown:has(> ul > li) {
+  /* Shared list dropdowns may be fixed under #app or nested in a control. */
+  :is(#app, #app-old) .dropdown:has(> ul > li) {
     background: var(--lct-surface-raised) !important;
     border: 1px solid var(--lct-border-strong) !important;
     box-shadow: var(--lct-shadow) !important;
     color: var(--lct-text) !important;
   }
 
-  .lfe-body > .dropdown:has(> ul > li) li {
+  :is(#app, #app-old) .dropdown:has(> ul > li) li {
     background: transparent !important;
     color: var(--lct-text-secondary) !important;
   }
 
-  .lfe-body > .dropdown:has(> ul > li) li > span > span[class*="lcolor--"] {
+  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span[class*="lcolor--"] {
     display: inline-block !important;
     padding: 0 7px !important;
     border: 1px solid transparent !important;
@@ -460,55 +471,55 @@
     line-height: 21px !important;
   }
 
-  .lfe-body > .dropdown:has(> ul > li) li > span > span.lcolor--pink-3 {
+  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--pink-3 {
     background: var(--lct-red-1) !important;
     border-color: var(--lct-red-2) !important;
     color: var(--lct-red-5) !important;
   }
 
-  .lfe-body > .dropdown:has(> ul > li) li > span > span.lcolor--orange-3 {
+  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--orange-3 {
     background: var(--lct-orange-1) !important;
     border-color: var(--lct-orange-2) !important;
     color: var(--lct-orange-5) !important;
   }
 
-  .lfe-body > .dropdown:has(> ul > li) li > span > span.lcolor--gold-3 {
+  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--gold-3 {
     background: var(--lct-yellow-1) !important;
     border-color: var(--lct-yellow-2) !important;
     color: var(--lct-yellow-5) !important;
   }
 
-  .lfe-body > .dropdown:has(> ul > li) li > span > span.lcolor--green-3 {
+  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--green-3 {
     background: var(--lct-green-1) !important;
     border-color: var(--lct-green-2) !important;
     color: var(--lct-green-5) !important;
   }
 
-  .lfe-body > .dropdown:has(> ul > li) li > span > span.lcolor--cyan-3 {
+  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--cyan-3 {
     background: var(--lct-cyan-1) !important;
     border-color: var(--lct-cyan-2) !important;
     color: var(--lct-cyan-5) !important;
   }
 
-  .lfe-body > .dropdown:has(> ul > li) li > span > span.lcolor--blue-3 {
+  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--blue-3 {
     background: var(--lct-blue-1) !important;
     border-color: var(--lct-blue-2) !important;
     color: var(--lct-blue-5) !important;
   }
 
-  .lfe-body > .dropdown:has(> ul > li) li > span > span.lcolor--purple-3 {
+  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--purple-3 {
     background: var(--lct-purple-1) !important;
     border-color: var(--lct-purple-2) !important;
     color: var(--lct-purple-5) !important;
   }
 
-  .lfe-body > .dropdown:has(> ul > li) li > span > span.lcolor--lapis-4 {
+  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--lapis-4 {
     background: var(--lct-lapis-1) !important;
     border-color: var(--lct-lapis-2) !important;
     color: var(--lct-lapis-5) !important;
   }
 
-  .lfe-body > .dropdown:has(> ul > li) li:is(:hover, :focus-visible, .selected, [aria-selected="true"]) {
+  :is(#app, #app-old) .dropdown:has(> ul > li) li:is(:hover, :focus-visible, .selected, [aria-selected="true"]) {
     background: var(--lct-surface-hover) !important;
   }
 
@@ -525,12 +536,12 @@
     color: var(--lct-text) !important;
   }
 
-  /* Problem header statistics retain a light-theme literal color on dark cards. */
-  .columba-content-wrap.header-layout .l-card.header-card .stat-text.name {
+  /* Shared statistic fields appear in problem headers and user profiles. */
+  :is(#app, #app-old) .field > .stat-text.name {
     color: var(--lct-text-secondary) !important;
   }
 
-  .columba-content-wrap.header-layout .l-card.header-card .stat-text.value {
+  :is(#app, #app-old) .field > .stat-text.value {
     color: var(--lct-text) !important;
   }
 
@@ -544,14 +555,6 @@
     background-color: var(--lct-surface-raised) !important;
     border-color: var(--lct-border) !important;
     color: var(--lct-text-secondary) !important;
-  }
-
-  main.lcolor-bg-background:has(.user-header-top) .user-stat-data .stat-text.name {
-    color: var(--lct-text-secondary) !important;
-  }
-
-  main.lcolor-bg-background:has(.user-header-top) .user-stat-data .stat-text.value {
-    color: var(--lct-text) !important;
   }
 
   main.lcolor-bg-background:has(.user-header-top) .heat-map-wrapper .lfe-caption {
@@ -580,9 +583,7 @@
 
   :where(
     #app,
-    #app-old,
-    .columba-content-wrap,
-    .modal
+    #app-old
   ) :where(h1, h2, h3, h4, h5, h6, strong) {
     color: var(--lct-text) !important;
   }
@@ -609,10 +610,7 @@
   /* Form controls */
   :is(
     #app,
-    #app-old,
-    .columba-content-wrap,
-    nav,
-    .modal
+    #app-old
   ) :where(
     input:not([type="checkbox"]):not([type="radio"]),
     textarea,
@@ -627,10 +625,7 @@
 
   :is(
     #app,
-    #app-old,
-    .columba-content-wrap,
-    nav,
-    .modal
+    #app-old
   ) :where(
     input:not([type="checkbox"]):not([type="radio"]):focus,
     textarea:focus,
@@ -644,32 +639,57 @@
 
   :is(
     #app,
-    #app-old,
-    .columba-content-wrap,
-    nav,
-    .modal
+    #app-old
   ) :where(input, textarea)::placeholder {
     color: var(--lct-text-muted) !important;
   }
 
   :is(
     #app,
-    #app-old,
-    .columba-content-wrap,
-    nav,
-    .modal
+    #app-old
   ) :where(option, optgroup) {
     background: var(--lct-surface) !important;
     color: var(--lct-text) !important;
   }
 
+  :is(#app, #app-old) .refined-input {
+    background: var(--lct-control) !important;
+    border: 1px solid var(--lct-border-strong) !important;
+    color: var(--lct-text) !important;
+    box-shadow: none !important;
+  }
+
+  :is(#app, #app-old) .refined-input > input {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: inherit !important;
+    outline: none !important;
+  }
+
+  :is(#app, #app-old) .refined-input:has(> input:focus) {
+    border-color: var(--lct-blue-3) !important;
+    box-shadow: var(--lct-focus-ring) !important;
+  }
+
+  :is(#app, #app-old) .combo-wrapper > .text {
+    background: var(--lct-control) !important;
+    border-color: var(--lct-border-strong) !important;
+    color: var(--lct-text) !important;
+  }
+
+  :is(#app, #app-old) .combo-wrapper > .arrow {
+    color: var(--lct-text-muted) !important;
+  }
+
+  :is(#app, #app-old) .combo-wrapper > .arrow path {
+    fill: currentColor !important;
+  }
+
   /* Buttons */
   :is(
     #app,
-    #app-old,
-    .columba-content-wrap,
-    nav,
-    .modal
+    #app-old
   ) :where(
     button,
     input[type="button"],
@@ -685,10 +705,7 @@
 
   :is(
     #app,
-    #app-old,
-    .columba-content-wrap,
-    nav,
-    .modal
+    #app-old
   ) :where(
     button:hover,
     input[type="button"]:hover,
@@ -701,88 +718,97 @@
     color: var(--lct-text-on-accent) !important;
   }
 
-  :is(#app, #app-old, .columba-content-wrap, nav, .modal) .am-btn-primary {
+  :is(#app, #app-old) .am-btn-primary {
     background: var(--lct-button-primary) !important;
     border-color: var(--lct-blue-2) !important;
     color: var(--lct-text-on-accent) !important;
   }
 
-  :is(#app, #app-old, .columba-content-wrap, nav, .modal) .am-btn-success {
+  :is(#app, #app-old) .am-btn-success {
     background: var(--lct-button-success) !important;
     border-color: var(--lct-green-2) !important;
     color: var(--lct-button-success-text) !important;
   }
 
-  :is(#app, #app-old, .columba-content-wrap, nav, .modal) .am-btn-danger {
+  :is(#app, #app-old) .am-btn-danger {
     background: var(--lct-button-danger) !important;
     border-color: var(--lct-red-2) !important;
     color: var(--lct-button-danger-text) !important;
   }
 
   /* Tables and code */
-  :is(#app, #app-old, .columba-content-wrap) :where(table, .table) {
+  :is(#app, #app-old) :where(table, .table) {
     background: var(--lct-surface) !important;
     color: var(--lct-text-secondary) !important;
   }
 
-  :is(#app, #app-old, .columba-content-wrap) :where(th, td) {
+  :is(#app, #app-old) :where(th, td) {
     border-color: var(--lct-border) !important;
   }
 
-  :is(#app, #app-old, .columba-content-wrap) tbody tr:hover {
+  :is(#app, #app-old) tbody tr:hover {
     background: var(--lct-surface-hover) !important;
   }
 
-  :is(#app, #app-old, .columba-content-wrap) :where(pre, code, .code) {
+  :is(#app, #app-old) .table .row {
+    border-bottom: 1px solid var(--lct-border) !important;
+    color: var(--lct-text-secondary) !important;
+  }
+
+  :is(#app, #app-old) .table .row:hover {
+    background: var(--lct-surface-hover) !important;
+  }
+
+  :is(#app, #app-old) :where(pre, code, .code) {
     background: var(--lct-code) !important;
     border-color: var(--lct-border) !important;
     color: var(--lct-code-text) !important;
   }
 
-  :is(#app, #app-old, .columba-content-wrap) pre {
+  :is(#app, #app-old) pre {
     border: 1px solid var(--lct-border) !important;
   }
 
-  :is(#app, #app-old, .columba-content-wrap) pre code {
+  :is(#app, #app-old) pre code {
     background: transparent !important;
     border: 0 !important;
   }
 
   /* Record source viewers use Highlight.js rather than the submission IDE's CodeMirror. */
-  :is(#app, #app-old, .columba-content-wrap) pre code.language-cpp :where(.hljs-keyword) {
+  :is(#app, #app-old) pre code.language-cpp :where(.hljs-keyword) {
     color: var(--lct-code-keyword) !important;
   }
 
-  :is(#app, #app-old, .columba-content-wrap) pre code.language-cpp :where(.hljs-built_in, .hljs-number) {
+  :is(#app, #app-old) pre code.language-cpp :where(.hljs-built_in, .hljs-number) {
     color: var(--lct-code-atom) !important;
   }
 
-  :is(#app, #app-old, .columba-content-wrap) pre code.language-cpp :where(.hljs-literal) {
+  :is(#app, #app-old) pre code.language-cpp :where(.hljs-literal) {
     color: var(--lct-code-literal) !important;
   }
 
-  :is(#app, #app-old, .columba-content-wrap) pre code.language-cpp :where(.hljs-meta, .hljs-meta-keyword, .hljs-meta-string) {
+  :is(#app, #app-old) pre code.language-cpp :where(.hljs-meta, .hljs-meta-keyword, .hljs-meta-string) {
     color: var(--lct-code-string) !important;
   }
 
-  :is(#app, #app-old, .columba-content-wrap) pre code.language-cpp :where(.hljs-title) {
+  :is(#app, #app-old) pre code.language-cpp :where(.hljs-title) {
     color: var(--lct-code-definition) !important;
   }
 
-  :is(#app, #app-old, .columba-content-wrap) pre code.language-cpp :where(.hljs-params) {
+  :is(#app, #app-old) pre code.language-cpp :where(.hljs-params) {
     color: var(--lct-code-local) !important;
   }
 
-  :is(#app, #app-old, .columba-content-wrap) pre code.language-cpp :where(.hljs-function) {
+  :is(#app, #app-old) pre code.language-cpp :where(.hljs-function) {
     color: var(--lct-code-text) !important;
   }
 
-  :is(#app, #app-old, .columba-content-wrap) pre code.language-cpp :where(.hljs-comment) {
+  :is(#app, #app-old) pre code.language-cpp :where(.hljs-comment) {
     color: var(--lct-code-comment) !important;
     font-style: italic;
   }
 
-  :is(#app, #app-old, .columba-content-wrap) blockquote {
+  :is(#app, #app-old) blockquote {
     background: var(--lct-surface-raised) !important;
     border-left-color: var(--lct-blue-3) !important;
     color: var(--lct-text-secondary) !important;
@@ -865,31 +891,35 @@
     color: var(--lct-red-4) !important;
   }
 
-  :where(.lg-fg-red) {
+  .lg-fg-red {
     color: var(--lct-red-3) !important;
   }
 
-  :where(.lg-fg-green, .lg-fg-greendark) {
+  :is(.lg-fg-green, .lg-fg-greendark) {
     color: var(--lct-green-3) !important;
   }
 
-  :where(.lg-fg-blue, .lg-fg-bluelight) {
+  :is(.lg-fg-blue, .lg-fg-bluelight) {
     color: var(--lct-blue-3) !important;
   }
 
-  :where(.lg-fg-orange, .lg-fg-brown) {
+  :is(.lg-fg-orange, .lg-fg-brown) {
     color: var(--lct-orange-3) !important;
   }
 
-  :where(.lg-fg-yellow) {
+  .lg-fg-yellow {
     color: var(--lct-yellow-3) !important;
   }
 
-  :where(.lg-fg-purple) {
+  .lg-fg-purple {
     color: var(--lct-purple-3) !important;
   }
 
-  :where(.lg-fg-gray, .lg-small) {
+  .lg-fg-gray {
+    color: var(--lct-text-muted) !important;
+  }
+
+  .lg-small {
     color: var(--lct-text-muted) !important;
   }
 
@@ -937,25 +967,10 @@
     color: var(--lct-text-on-bright-accent) !important;
   }
 
-  .columba-content-wrap.main-content .filter-section .combo-wrapper .text,
-  .columba-content-wrap.main-content .filter-section .tag-button,
-  .columba-content-wrap.main-content .filter-section .refined-input.search-text {
+  .columba-content-wrap.main-content .filter-section .tag-button {
     background: var(--lct-control) !important;
     border-color: var(--lct-border-strong) !important;
     color: var(--lct-text) !important;
-  }
-
-  #app .columba-content-wrap.main-content .filter-section .refined-input.search-text > input.search-text {
-    background: transparent !important;
-    border: 0 !important;
-    box-shadow: none !important;
-    color: inherit !important;
-    outline: none !important;
-  }
-
-  #app .columba-content-wrap.main-content .filter-section .refined-input.search-text:has(> input.search-text:focus) {
-    border-color: var(--lct-blue-3) !important;
-    box-shadow: var(--lct-focus-ring) !important;
   }
 
   .columba-content-wrap.main-content .filter-section .placeholder,
@@ -980,15 +995,6 @@
     background: transparent !important;
     border-bottom-color: var(--lct-border-strong) !important;
     color: var(--lct-text) !important;
-  }
-
-  .columba-content-wrap.main-content .list-wrap.table .row {
-    border-bottom: 1px solid var(--lct-border) !important;
-    color: var(--lct-text-secondary) !important;
-  }
-
-  .columba-content-wrap.main-content .list-wrap.table .row:hover {
-    background: var(--lct-surface-hover) !important;
   }
 
   .columba-content-wrap.main-content .list-wrap :is(.tags, .difficulty) span[style*="background-color: rgb(19, 194, 194)"] {
@@ -1110,153 +1116,153 @@
   }
 
   /* IDE mode: the editor is CodeMirror 6 inside the panel that contains .cm-editor. */
-  .lfe-body .ide-container .ide-toolbar {
+  .ide-container .ide-toolbar {
     background: var(--lct-surface) !important;
     border-bottom-color: var(--lct-border) !important;
     color: var(--lct-text-secondary) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .lang-select,
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .lang-select .text {
+  .ide-container .panel-a:has(.cm-editor) .lang-select,
+  .ide-container .panel-a:has(.cm-editor) .lang-select .text {
     background: var(--lct-control) !important;
     border-color: var(--lct-border-strong) !important;
     color: var(--lct-text) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .lang-select .arrow {
+  .ide-container .panel-a:has(.cm-editor) .lang-select .arrow {
     color: var(--lct-text-muted) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .lang-select .arrow path {
+  .ide-container .panel-a:has(.cm-editor) .lang-select .arrow path {
     fill: currentColor !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .actions > div:has(> input[type="checkbox"]),
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .actions > div:has(> input[type="checkbox"]) label {
+  .ide-container .panel-a:has(.cm-editor) .actions > div:has(> input[type="checkbox"]),
+  .ide-container .panel-a:has(.cm-editor) .actions > div:has(> input[type="checkbox"]) label {
     color: var(--lct-text-secondary) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .actions > div:has(> input[type="checkbox"]) input[type="checkbox"] {
+  .ide-container .panel-a:has(.cm-editor) .actions > div:has(> input[type="checkbox"]) input[type="checkbox"] {
     accent-color: var(--lct-blue-3) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .actions > div:has(> input[type="checkbox"]) label .fa-input {
+  .ide-container .panel-a:has(.cm-editor) .actions > div:has(> input[type="checkbox"]) label .fa-input {
     color: var(--lct-blue-3) !important;
     fill: var(--lct-blue-3) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) :is(.cm-editor, .cm-scroller) {
+  .ide-container :is(.cm-editor, .cm-scroller) {
     background: var(--lct-code) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-editor {
+  .ide-container .cm-editor {
     border-color: var(--lct-border) !important;
     color: var(--lct-code-text) !important;
     color-scheme: dark !important;
     caret-color: var(--lct-blue-4) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content,
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-line {
+  .ide-container .cm-content,
+  .ide-container .cm-line {
     color: var(--lct-code-text) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-gutters {
+  .ide-container .cm-gutters {
     background: var(--lct-gutter) !important;
     background-image: none !important;
     border-right: 1px solid var(--lct-border) !important;
     color: var(--lct-gutter-text) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-gutter,
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-gutterElement {
+  .ide-container .cm-gutter,
+  .ide-container .cm-gutterElement {
     background: transparent !important;
     color: var(--lct-gutter-text) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-lineNumbers .cm-gutterElement {
+  .ide-container .cm-lineNumbers .cm-gutterElement {
     box-sizing: border-box;
     min-width: 2.5em;
     padding: 0 0.75em 0 0.5em !important;
     text-align: right;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-activeLine {
+  .ide-container .cm-activeLine {
     background: var(--lct-code-active-line) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-activeLineGutter {
+  .ide-container .cm-activeLineGutter {
     background: var(--lct-surface-hover) !important;
     color: var(--lct-gutter-active-text) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-selectionBackground,
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content ::selection {
+  .ide-container .cm-selectionBackground,
+  .ide-container .cm-content ::selection {
     background: var(--lct-code-selection) !important;
   }
 
   /* Current Luogu C++ mode uses CodeMirror's generated ͼ* token classes. */
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼb, .tok-keyword, .cm-keyword) {
+  .ide-container .cm-content :is(.ͼb, .tok-keyword, .cm-keyword) {
     color: var(--lct-code-keyword) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼc, .tok-atom, .tok-bool, .tok-url, .tok-contentSeparator, .tok-labelName, .cm-atom, .cm-builtin) {
+  .ide-container .cm-content :is(.ͼc, .tok-atom, .tok-bool, .tok-url, .tok-contentSeparator, .tok-labelName, .cm-atom, .cm-builtin) {
     color: var(--lct-code-atom) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼd, .tok-literal, .tok-inserted) {
+  .ide-container .cm-content :is(.ͼd, .tok-literal, .tok-inserted) {
     color: var(--lct-code-literal) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼe, .tok-string, .tok-deleted, .cm-string) {
+  .ide-container .cm-content :is(.ͼe, .tok-string, .tok-deleted, .cm-string) {
     color: var(--lct-code-string) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼf, .tok-regexp, .tok-escape, .tok-special, .cm-string-2) {
+  .ide-container .cm-content :is(.ͼf, .tok-regexp, .tok-escape, .tok-special, .cm-string-2) {
     color: var(--lct-code-regexp) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼg, .tok-definition, .tok-definitionKeyword, .cm-def) {
+  .ide-container .cm-content :is(.ͼg, .tok-definition, .tok-definitionKeyword, .cm-def) {
     color: var(--lct-code-definition) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼh, .tok-local) {
+  .ide-container .cm-content :is(.ͼh, .tok-local) {
     color: var(--lct-code-local) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼi, .tok-typeName, .tok-namespace, .cm-type) {
+  .ide-container .cm-content :is(.ͼi, .tok-typeName, .tok-namespace, .cm-type) {
     color: var(--lct-code-type) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼj, .tok-className, .cm-tag) {
+  .ide-container .cm-content :is(.ͼj, .tok-className, .cm-tag) {
     color: var(--lct-code-class) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼk, .tok-macroName, .tok-moduleKeyword, .cm-meta) {
+  .ide-container .cm-content :is(.ͼk, .tok-macroName, .tok-moduleKeyword, .cm-meta) {
     color: var(--lct-code-special) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼl, .tok-propertyName, .cm-property) {
+  .ide-container .cm-content :is(.ͼl, .tok-propertyName, .cm-property) {
     color: var(--lct-code-property) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼm, .tok-comment, .cm-comment) {
+  .ide-container .cm-content :is(.ͼm, .tok-comment, .cm-comment) {
     color: var(--lct-code-comment) !important;
     font-style: italic;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content :is(.ͼn, .tok-invalid, .cm-error) {
+  .ide-container .cm-content :is(.ͼn, .tok-invalid, .cm-error) {
     background: var(--lct-danger-soft) !important;
     color: var(--lct-code-invalid) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .actions > button.solid {
+  .ide-container .panel-a:has(.cm-editor) .actions > button.solid {
     background: var(--lct-button-primary) !important;
     border-color: var(--lct-blue-2) !important;
     color: var(--lct-text-on-accent) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .actions > button.solid:is(:hover, :focus-visible) {
+  .ide-container .panel-a:has(.cm-editor) .actions > button.solid:is(:hover, :focus-visible) {
     background: var(--lct-blue-2) !important;
     border-color: var(--lct-blue-3) !important;
     color: var(--lct-text-on-accent) !important;
