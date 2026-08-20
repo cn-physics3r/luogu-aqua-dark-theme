@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Dark Palette Experiment
 @namespace      github.com/physics3r/luogu-dark-theme
-@version        0.1.18
+@version        0.1.24
 @description    Global dark palette and shared component override experiment for Luogu.
 @author         Physics3r
 ==/UserStyle== */
@@ -437,6 +437,81 @@
     border-color: var(--lct-border) !important;
   }
 
+  /* Luogu's shared fixed dropdown is rendered directly under #app.lfe-body. */
+  .lfe-body > .dropdown:has(> ul > li) {
+    background: var(--lct-surface-raised) !important;
+    border: 1px solid var(--lct-border-strong) !important;
+    box-shadow: var(--lct-shadow) !important;
+    color: var(--lct-text) !important;
+  }
+
+  .lfe-body > .dropdown:has(> ul > li) li {
+    background: transparent !important;
+    color: var(--lct-text-secondary) !important;
+  }
+
+  .lfe-body > .dropdown:has(> ul > li) li > span > span[class*="lcolor--"] {
+    display: inline-block !important;
+    padding: 0 7px !important;
+    border: 1px solid transparent !important;
+    border-radius: 2px !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 21px !important;
+  }
+
+  .lfe-body > .dropdown:has(> ul > li) li > span > span.lcolor--pink-3 {
+    background: var(--lct-red-1) !important;
+    border-color: var(--lct-red-2) !important;
+    color: var(--lct-red-5) !important;
+  }
+
+  .lfe-body > .dropdown:has(> ul > li) li > span > span.lcolor--orange-3 {
+    background: var(--lct-orange-1) !important;
+    border-color: var(--lct-orange-2) !important;
+    color: var(--lct-orange-5) !important;
+  }
+
+  .lfe-body > .dropdown:has(> ul > li) li > span > span.lcolor--gold-3 {
+    background: var(--lct-yellow-1) !important;
+    border-color: var(--lct-yellow-2) !important;
+    color: var(--lct-yellow-5) !important;
+  }
+
+  .lfe-body > .dropdown:has(> ul > li) li > span > span.lcolor--green-3 {
+    background: var(--lct-green-1) !important;
+    border-color: var(--lct-green-2) !important;
+    color: var(--lct-green-5) !important;
+  }
+
+  .lfe-body > .dropdown:has(> ul > li) li > span > span.lcolor--cyan-3 {
+    background: var(--lct-cyan-1) !important;
+    border-color: var(--lct-cyan-2) !important;
+    color: var(--lct-cyan-5) !important;
+  }
+
+  .lfe-body > .dropdown:has(> ul > li) li > span > span.lcolor--blue-3 {
+    background: var(--lct-blue-1) !important;
+    border-color: var(--lct-blue-2) !important;
+    color: var(--lct-blue-5) !important;
+  }
+
+  .lfe-body > .dropdown:has(> ul > li) li > span > span.lcolor--purple-3 {
+    background: var(--lct-purple-1) !important;
+    border-color: var(--lct-purple-2) !important;
+    color: var(--lct-purple-5) !important;
+  }
+
+  .lfe-body > .dropdown:has(> ul > li) li > span > span.lcolor--lapis-4 {
+    background: var(--lct-lapis-1) !important;
+    border-color: var(--lct-lapis-2) !important;
+    color: var(--lct-lapis-5) !important;
+  }
+
+  .lfe-body > .dropdown:has(> ul > li) li:is(:hover, :focus-visible, .selected, [aria-selected="true"]) {
+    background: var(--lct-surface-hover) !important;
+  }
+
   .l-card.header-card,
   .l-card.header-card::before,
   :where(
@@ -870,6 +945,19 @@
     color: var(--lct-text) !important;
   }
 
+  #app .columba-content-wrap.main-content .filter-section .refined-input.search-text > input.search-text {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: inherit !important;
+    outline: none !important;
+  }
+
+  #app .columba-content-wrap.main-content .filter-section .refined-input.search-text:has(> input.search-text:focus) {
+    border-color: var(--lct-blue-3) !important;
+    box-shadow: var(--lct-focus-ring) !important;
+  }
+
   .columba-content-wrap.main-content .filter-section .placeholder,
   .columba-content-wrap.main-content .filter-section .search-icon {
     color: var(--lct-text-muted) !important;
@@ -909,34 +997,52 @@
     color: var(--lct-cyan-5) !important;
   }
 
-  .columba-content-wrap.main-content .list-wrap .tags span[style*="background-color: rgb(52, 152, 219)"] {
+  .columba-content-wrap.main-content .list-wrap :is(.tags, .difficulty) span[style*="background-color: rgb(52, 152, 219)"] {
     background: var(--lct-blue-1) !important;
     border-color: var(--lct-blue-2) !important;
     color: var(--lct-blue-5) !important;
   }
 
-  .columba-content-wrap.main-content .list-wrap .difficulty span[style*="background-color: rgb(254, 76, 97)"] {
+  .columba-content-wrap.main-content .list-wrap :is(.tags, .difficulty) span[style*="background-color: rgb(254, 76, 97)"] {
     background: var(--lct-red-1) !important;
     border-color: var(--lct-red-2) !important;
     color: var(--lct-red-5) !important;
   }
 
-  .columba-content-wrap.main-content .list-wrap .difficulty span[style*="background-color: rgb(243, 156, 17)"] {
+  .columba-content-wrap.main-content .list-wrap :is(.tags, .difficulty) span[style*="background-color: rgb(243, 156, 17)"] {
     background: var(--lct-orange-1) !important;
     border-color: var(--lct-orange-2) !important;
     color: var(--lct-orange-5) !important;
   }
 
-  .columba-content-wrap.main-content .list-wrap .difficulty span[style*="background-color: rgb(83, 196, 26)"] {
+  .columba-content-wrap.main-content .list-wrap :is(.tags, .difficulty) span[style*="background-color: rgb(83, 196, 26)"] {
     background: var(--lct-green-1) !important;
     border-color: var(--lct-green-2) !important;
     color: var(--lct-green-5) !important;
   }
 
-  .columba-content-wrap.main-content .list-wrap .difficulty span[style*="background-color: rgb(255, 193, 22)"] {
+  .columba-content-wrap.main-content .list-wrap :is(.tags, .difficulty) span[style*="background-color: rgb(255, 193, 22)"] {
     background: var(--lct-yellow-1) !important;
     border-color: var(--lct-yellow-2) !important;
     color: var(--lct-yellow-5) !important;
+  }
+
+  .columba-content-wrap.main-content .list-wrap :is(.tags, .difficulty) span[style*="background-color: rgb(156, 61, 207)"] {
+    background: var(--lct-purple-1) !important;
+    border-color: var(--lct-purple-2) !important;
+    color: var(--lct-purple-5) !important;
+  }
+
+  .columba-content-wrap.main-content .list-wrap :is(.tags, .difficulty) span[style*="background-color: rgb(14, 29, 105)"] {
+    background: var(--lct-lapis-1) !important;
+    border-color: var(--lct-lapis-2) !important;
+    color: var(--lct-lapis-5) !important;
+  }
+
+  .columba-content-wrap.main-content .list-wrap :is(.tags, .difficulty) span[style*="background-color: rgb(232, 232, 232)"] {
+    background: var(--lct-surface-hover) !important;
+    border-color: var(--lct-border-strong) !important;
+    color: var(--lct-text-secondary) !important;
   }
 
   .columba-content-wrap.main-content .list-wrap .progress-frame {
@@ -1023,23 +1129,6 @@
 
   .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .lang-select .arrow path {
     fill: currentColor !important;
-  }
-
-  .lfe-body:has(.ide-container .cm-editor) > .dropdown:has(> ul > li) {
-    background: var(--lct-surface-raised) !important;
-    border: 1px solid var(--lct-border-strong) !important;
-    box-shadow: var(--lct-shadow) !important;
-    color: var(--lct-text) !important;
-  }
-
-  .lfe-body:has(.ide-container .cm-editor) > .dropdown:has(> ul > li) li {
-    background: transparent !important;
-    color: var(--lct-text-secondary) !important;
-  }
-
-  .lfe-body:has(.ide-container .cm-editor) > .dropdown:has(> ul > li) li:is(:hover, :focus-visible, .selected, [aria-selected="true"]) {
-    background: var(--lct-surface-hover) !important;
-    color: var(--lct-blue-4) !important;
   }
 
   .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .actions > div:has(> input[type="checkbox"]),
