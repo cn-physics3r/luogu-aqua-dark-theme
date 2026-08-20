@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Dark Palette Experiment
 @namespace      github.com/physics3r/luogu-dark-theme
-@version        0.1.15
+@version        0.1.18
 @description    Global dark palette and shared component override experiment for Luogu.
 @author         Physics3r
 ==/UserStyle== */
@@ -673,6 +673,40 @@
     border: 0 !important;
   }
 
+  /* Record source viewers use Highlight.js rather than the submission IDE's CodeMirror. */
+  :is(#app, #app-old, .columba-content-wrap) pre code.language-cpp :where(.hljs-keyword) {
+    color: var(--lct-code-keyword) !important;
+  }
+
+  :is(#app, #app-old, .columba-content-wrap) pre code.language-cpp :where(.hljs-built_in, .hljs-number) {
+    color: var(--lct-code-atom) !important;
+  }
+
+  :is(#app, #app-old, .columba-content-wrap) pre code.language-cpp :where(.hljs-literal) {
+    color: var(--lct-code-literal) !important;
+  }
+
+  :is(#app, #app-old, .columba-content-wrap) pre code.language-cpp :where(.hljs-meta, .hljs-meta-keyword, .hljs-meta-string) {
+    color: var(--lct-code-string) !important;
+  }
+
+  :is(#app, #app-old, .columba-content-wrap) pre code.language-cpp :where(.hljs-title) {
+    color: var(--lct-code-definition) !important;
+  }
+
+  :is(#app, #app-old, .columba-content-wrap) pre code.language-cpp :where(.hljs-params) {
+    color: var(--lct-code-local) !important;
+  }
+
+  :is(#app, #app-old, .columba-content-wrap) pre code.language-cpp :where(.hljs-function) {
+    color: var(--lct-code-text) !important;
+  }
+
+  :is(#app, #app-old, .columba-content-wrap) pre code.language-cpp :where(.hljs-comment) {
+    color: var(--lct-code-comment) !important;
+    font-style: italic;
+  }
+
   :is(#app, #app-old, .columba-content-wrap) blockquote {
     background: var(--lct-surface-raised) !important;
     border-left-color: var(--lct-blue-3) !important;
@@ -841,11 +875,7 @@
     color: var(--lct-text-muted) !important;
   }
 
-  .columba-content-wrap.main-content .filter-section .search-icon {
-    fill: var(--lct-text-muted) !important;
-  }
-
-  .columba-content-wrap.main-content .filter-section .search-icon path {
+  .columba-content-wrap.main-content .filter-section :is(.search-icon, .search-icon path) {
     fill: var(--lct-text-muted) !important;
   }
 
@@ -873,7 +903,7 @@
     background: var(--lct-surface-hover) !important;
   }
 
-  .columba-content-wrap.main-content .list-wrap .tags span[style*="background-color: rgb(19, 194, 194)"] {
+  .columba-content-wrap.main-content .list-wrap :is(.tags, .difficulty) span[style*="background-color: rgb(19, 194, 194)"] {
     background: var(--lct-cyan-1) !important;
     border-color: var(--lct-cyan-2) !important;
     color: var(--lct-cyan-5) !important;
@@ -909,12 +939,6 @@
     color: var(--lct-yellow-5) !important;
   }
 
-  .columba-content-wrap.main-content .list-wrap .difficulty span[style*="background-color: rgb(19, 194, 194)"] {
-    background: var(--lct-cyan-1) !important;
-    border-color: var(--lct-cyan-2) !important;
-    color: var(--lct-cyan-5) !important;
-  }
-
   .columba-content-wrap.main-content .list-wrap .progress-frame {
     background: var(--lct-border) !important;
     border-color: var(--lct-border) !important;
@@ -938,6 +962,42 @@
   }
 
   .columba-content-wrap.main-content .bottom-wrap.float button:is(:hover, :focus-visible) {
+    background: var(--lct-surface-hover) !important;
+    border-color: var(--lct-blue-3) !important;
+    color: var(--lct-blue-4) !important;
+  }
+
+  /* Problem-list tag picker: its headings and toggle tags retain light-theme literals. */
+  .modal .l-card.container.type-burger:has(.tag-select-area) {
+    background: var(--lct-surface) !important;
+    border-color: var(--lct-border) !important;
+    color: var(--lct-text-secondary) !important;
+  }
+
+  .modal .l-card.container.type-burger:has(.tag-select-area) .menu-container {
+    border-bottom-color: var(--lct-border) !important;
+  }
+
+  .modal .l-card.container.type-burger:has(.tag-select-area) .tag-select-area {
+    background: var(--lct-surface) !important;
+    color: var(--lct-text-secondary) !important;
+  }
+
+  .modal .l-card.container.type-burger:has(.tag-select-area) .tag-select-area .section {
+    border-bottom-color: var(--lct-border) !important;
+  }
+
+  .modal .l-card.container.type-burger:has(.tag-select-area) .tag-select-area .title {
+    color: var(--lct-text) !important;
+  }
+
+  .modal .l-card.container.type-burger:has(.tag-select-area) .tag-select-area .toggle-tag {
+    background: var(--lct-control) !important;
+    border: 1px solid var(--lct-border-strong) !important;
+    color: var(--lct-text-secondary) !important;
+  }
+
+  .modal .l-card.container.type-burger:has(.tag-select-area) .tag-select-area .toggle-tag:is(:hover, :focus-visible, .selected, [aria-selected="true"]) {
     background: var(--lct-surface-hover) !important;
     border-color: var(--lct-blue-3) !important;
     color: var(--lct-blue-4) !important;
@@ -996,16 +1056,15 @@
     fill: var(--lct-blue-3) !important;
   }
 
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-editor {
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) :is(.cm-editor, .cm-scroller) {
     background: var(--lct-code) !important;
+  }
+
+  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-editor {
     border-color: var(--lct-border) !important;
     color: var(--lct-code-text) !important;
     color-scheme: dark !important;
     caret-color: var(--lct-blue-4) !important;
-  }
-
-  .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-scroller {
-    background: var(--lct-code) !important;
   }
 
   .lfe-body .ide-container .panel.panel-a:has(.cm-editor) .cm-content,
