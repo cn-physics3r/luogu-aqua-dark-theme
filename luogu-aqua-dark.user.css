@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Dark Palette Experiment
 @namespace      github.com/physics3r/luogu-dark-theme
-@version        0.1.12
+@version        0.1.13
 @description    Global dark palette and shared component override experiment for Luogu.
 @author         Physics3r
 ==/UserStyle== */
@@ -441,6 +441,15 @@
   ) {
     background-color: var(--lct-surface-raised) !important;
     border-color: var(--lct-border) !important;
+    color: var(--lct-text) !important;
+  }
+
+  /* Problem header statistics retain a light-theme literal color on dark cards. */
+  .columba-content-wrap.header-layout .l-card.header-card .stat-text.name {
+    color: var(--lct-text-secondary) !important;
+  }
+
+  .columba-content-wrap.header-layout .l-card.header-card .stat-text.value {
     color: var(--lct-text) !important;
   }
 
