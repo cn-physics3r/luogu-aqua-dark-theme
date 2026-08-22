@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Dark Palette Experiment
 @namespace      github.com/physics3r/luogu-dark-theme
-@version        0.1.30
+@version        0.1.31
 @description    Global dark palette and shared component override experiment for Luogu.
 @author         Physics3r
 ==/UserStyle== */
@@ -1056,6 +1056,11 @@
     background: transparent !important;
     border-bottom-color: var(--lct-border-strong) !important;
     color: var(--lct-text) !important;
+  }
+
+  /* The native problem-list component omits the divider after its last row. */
+  :is(#app, #app-old) .columba-content-wrap.main-content .list-wrap.table .row-wrap > .row:last-child {
+    border-bottom: 0 !important;
   }
 
   .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(19, 194, 194)"] {
