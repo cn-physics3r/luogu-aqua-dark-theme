@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Dark Palette Experiment
 @namespace      github.com/physics3r/luogu-dark-theme
-@version        0.1.25
+@version        0.1.30
 @description    Global dark palette and shared component override experiment for Luogu.
 @author         Physics3r
 ==/UserStyle== */
@@ -536,6 +536,18 @@
     color: var(--lct-text) !important;
   }
 
+  .columba-content-wrap.header-layout .l-card.header-card .btn-actions .l-button.solid {
+    background: var(--lct-button-primary) !important;
+    border-color: var(--lct-blue-2) !important;
+    color: var(--lct-text-on-accent) !important;
+  }
+
+  .columba-content-wrap.header-layout .l-card.header-card .btn-actions .l-button.solid:is(:hover, :focus-visible) {
+    background: var(--lct-blue-2) !important;
+    border-color: var(--lct-blue-3) !important;
+    color: var(--lct-text-on-accent) !important;
+  }
+
   /* Shared statistic fields appear in problem headers and user profiles. */
   :is(#app, #app-old) .field > .stat-text.name {
     color: var(--lct-text-secondary) !important;
@@ -808,6 +820,55 @@
     font-style: italic;
   }
 
+  /* Solution pages use Prism token classes for C++ code blocks. */
+  :is(#app, #app-old) pre code.language-cpp .token.directive-hash,
+  :is(#app, #app-old) pre code.language-cpp .token.macro.property {
+    color: var(--lct-code-special) !important;
+  }
+
+  :is(#app, #app-old) pre code.language-cpp .token.directive.keyword,
+  :is(#app, #app-old) pre code.language-cpp .token.keyword {
+    color: var(--lct-code-keyword) !important;
+  }
+
+  :is(#app, #app-old) pre code.language-cpp .token.string,
+  :is(#app, #app-old) pre code.language-cpp .token.char {
+    color: var(--lct-code-string) !important;
+  }
+
+  :is(#app, #app-old) pre code.language-cpp .token.number {
+    color: var(--lct-code-atom) !important;
+  }
+
+  :is(#app, #app-old) pre code.language-cpp .token.boolean {
+    color: var(--lct-code-literal) !important;
+  }
+
+  :is(#app, #app-old) pre code.language-cpp .token.function {
+    color: var(--lct-code-definition) !important;
+  }
+
+  :is(#app, #app-old) pre code.language-cpp .token.operator {
+    color: var(--lct-code-property) !important;
+  }
+
+  :is(#app, #app-old) pre code.language-cpp .token.punctuation {
+    color: var(--lct-text-muted) !important;
+  }
+
+  :is(#app, #app-old) pre code.language-cpp .token.comment {
+    color: var(--lct-code-comment) !important;
+    font-style: italic;
+  }
+
+  :is(#app, #app-old) pre code.language-cpp .token.macro-name {
+    color: var(--lct-code-type) !important;
+  }
+
+  :is(#app, #app-old) pre code.language-cpp .token.expression {
+    color: var(--lct-code-local) !important;
+  }
+
   :is(#app, #app-old) blockquote {
     background: var(--lct-surface-raised) !important;
     border-left-color: var(--lct-blue-3) !important;
@@ -997,58 +1058,64 @@
     color: var(--lct-text) !important;
   }
 
-  .columba-content-wrap.main-content .list-wrap :is(.tags, .difficulty) span[style*="background-color: rgb(19, 194, 194)"] {
+  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(19, 194, 194)"] {
     background: var(--lct-cyan-1) !important;
     border-color: var(--lct-cyan-2) !important;
     color: var(--lct-cyan-5) !important;
   }
 
-  .columba-content-wrap.main-content .list-wrap :is(.tags, .difficulty) span[style*="background-color: rgb(52, 152, 219)"] {
+  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(52, 152, 219)"] {
     background: var(--lct-blue-1) !important;
     border-color: var(--lct-blue-2) !important;
     color: var(--lct-blue-5) !important;
   }
 
-  .columba-content-wrap.main-content .list-wrap :is(.tags, .difficulty) span[style*="background-color: rgb(254, 76, 97)"] {
+  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(254, 76, 97)"] {
     background: var(--lct-red-1) !important;
     border-color: var(--lct-red-2) !important;
     color: var(--lct-red-5) !important;
   }
 
-  .columba-content-wrap.main-content .list-wrap :is(.tags, .difficulty) span[style*="background-color: rgb(243, 156, 17)"] {
+  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(243, 156, 17)"] {
     background: var(--lct-orange-1) !important;
     border-color: var(--lct-orange-2) !important;
     color: var(--lct-orange-5) !important;
   }
 
-  .columba-content-wrap.main-content .list-wrap :is(.tags, .difficulty) span[style*="background-color: rgb(83, 196, 26)"] {
+  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(83, 196, 26)"] {
     background: var(--lct-green-1) !important;
     border-color: var(--lct-green-2) !important;
     color: var(--lct-green-5) !important;
   }
 
-  .columba-content-wrap.main-content .list-wrap :is(.tags, .difficulty) span[style*="background-color: rgb(255, 193, 22)"] {
+  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(255, 193, 22)"] {
     background: var(--lct-yellow-1) !important;
     border-color: var(--lct-yellow-2) !important;
     color: var(--lct-yellow-5) !important;
   }
 
-  .columba-content-wrap.main-content .list-wrap :is(.tags, .difficulty) span[style*="background-color: rgb(156, 61, 207)"] {
+  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(156, 61, 207)"] {
     background: var(--lct-purple-1) !important;
     border-color: var(--lct-purple-2) !important;
     color: var(--lct-purple-5) !important;
   }
 
-  .columba-content-wrap.main-content .list-wrap :is(.tags, .difficulty) span[style*="background-color: rgb(14, 29, 105)"] {
+  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(14, 29, 105)"] {
     background: var(--lct-lapis-1) !important;
     border-color: var(--lct-lapis-2) !important;
     color: var(--lct-lapis-5) !important;
   }
 
-  .columba-content-wrap.main-content .list-wrap :is(.tags, .difficulty) span[style*="background-color: rgb(232, 232, 232)"] {
+  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(232, 232, 232)"] {
     background: var(--lct-surface-hover) !important;
     border-color: var(--lct-border-strong) !important;
     color: var(--lct-text-secondary) !important;
+  }
+
+  .columba-content-wrap.main-content .l-card .tags span[style*="background-color: rgb(41, 73, 180)"] {
+    background: var(--lct-lapis-1) !important;
+    border-color: var(--lct-lapis-2) !important;
+    color: var(--lct-lapis-5) !important;
   }
 
   .columba-content-wrap.main-content .list-wrap .progress-frame {
@@ -1077,6 +1144,30 @@
     background: var(--lct-surface-hover) !important;
     border-color: var(--lct-blue-3) !important;
     color: var(--lct-blue-4) !important;
+  }
+
+  /* Solution pages use a separate fixed operation bar below each solution. */
+  .lfe-body .float.operations {
+    background: var(--lct-surface) !important;
+    border-top: 1px solid var(--lct-border) !important;
+    box-shadow: var(--lct-shadow-float) !important;
+    color: var(--lct-text-secondary) !important;
+  }
+
+  .lfe-body .float.operations > *,
+  .lfe-body .float.operations .button,
+  .lfe-body .float.operations svg {
+    color: var(--lct-text-secondary) !important;
+    fill: currentColor !important;
+    opacity: 1 !important;
+  }
+
+  .lfe-body .float.operations .button:is(:hover, :focus-visible) {
+    color: var(--lct-blue-4) !important;
+  }
+
+  .columba-content-wrap.main-content .sidebar-container.reverse .side .l-card b.lcolor--yellow-4 {
+    color: var(--lct-yellow-3) !important;
   }
 
   /* Problem-list tag picker: its headings and toggle tags retain light-theme literals. */
