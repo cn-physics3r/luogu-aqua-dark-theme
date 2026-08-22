@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Dark Palette Experiment
 @namespace      github.com/physics3r/luogu-dark-theme
-@version        0.1.45
+@version        0.1.46
 @description    Global dark palette and shared component override experiment for Luogu.
 @author         Physics3r
 ==/UserStyle== */
@@ -1261,6 +1261,27 @@
     color: var(--lct-text) !important;
   }
 
+  /* Record list statuses: replace the native inline colors while preserving
+   * the Accepted/Unaccepted semantic distinction and score hierarchy. */
+  main.wrapped.lfe-body.mobile-body:has(.row-wrap > .row .detail) .status-link:has(.status-name[style*="background: rgb(82, 196, 26)"]) .status-name {
+    background: var(--lct-green-1) !important;
+    box-shadow: inset 0 0 0 1px var(--lct-green-2) !important;
+    color: var(--lct-green-5) !important;
+  }
+
+  main.wrapped.lfe-body.mobile-body:has(.row-wrap > .row .detail) .status-link:has(.status-name[style*="background: rgb(82, 196, 26)"]) > span[style*="font-weight: bold"] {
+    color: var(--lct-green-4) !important;
+  }
+
+  main.wrapped.lfe-body.mobile-body:has(.row-wrap > .row .detail) .status-link:has(.status-name[style*="background: rgb(231, 76, 60)"]) .status-name {
+    background: var(--lct-red-1) !important;
+    box-shadow: inset 0 0 0 1px var(--lct-red-2) !important;
+    color: var(--lct-red-5) !important;
+  }
+
+  main.wrapped.lfe-body.mobile-body:has(.row-wrap > .row .detail) .status-link:has(.status-name[style*="background: rgb(231, 76, 60)"]) > span[style*="font-weight: bold"] {
+    color: var(--lct-red-4) !important;
+  }
   .columba-content-wrap.main-content .bottom-wrap.float {
     background: var(--lct-surface) !important;
     border-top: 1px solid var(--lct-border) !important;
