@@ -1,12 +1,23 @@
 /* ==UserStyle==
-@name           Luogu Dark Palette Experiment
-@namespace      github.com/physics3r/luogu-dark-theme
-@version        0.1.53
-@description    Global dark palette and shared component override experiment for Luogu.
+@name           Luogu Aqua Dark
+@namespace      github.com/cn-physics3r/luogu-aqua-dark-theme
+@version        0.1.56
+@description    Restrained charcoal and aqua dark theme for Luogu.
 @author         Physics3r
+@homepageURL    https://github.com/cn-physics3r/luogu-aqua-dark-theme
+@supportURL     https://github.com/cn-physics3r/luogu-aqua-dark-theme/issues
+@updateURL      https://raw.githubusercontent.com/cn-physics3r/luogu-aqua-dark-theme/main/luogu-aqua-dark.user.css
 ==/UserStyle== */
 
 @-moz-document domain("www.luogu.com.cn") {
+  /*
+   * Section index
+   * 1. Theme tokens and Luogu palette mappings
+   * 2. Shared color layer and application shells
+   * 3. Shared components, controls, tables, and code
+   * 4. Semantic utilities and verified page-specific overrides
+   * 5. Homepage, charts, and training pages
+   */
   :root,
   #app,
   #app-old {
@@ -324,6 +335,19 @@
     color: var(--lct-blue-4) !important;
   }
 
+  :is(#app, #app-old) :where(
+    a,
+    button,
+    input,
+    textarea,
+    select,
+    [role="button"],
+    [tabindex]:not([tabindex="-1"])
+  ):focus-visible {
+    outline: 1px solid var(--lct-blue-2) !important;
+    outline-offset: 2px !important;
+  }
+
   ::selection {
     background: var(--lct-selection-background);
     color: var(--lct-text-on-accent);
@@ -554,52 +578,74 @@
     line-height: 21px !important;
   }
 
-  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--pink-3 {
+  /* Verified semantic badges share one palette across dropdown, problem, and contest components. */
+  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--pink-3,
+  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(254, 76, 97)"],
+  .columba-content-wrap.main-content:has(> .filter-card) .list-card .contest-type-block .tag[style*="background-color: rgb(231, 77, 60)"] {
     background: var(--lct-red-1) !important;
     border-color: var(--lct-red-2) !important;
     color: var(--lct-red-5) !important;
   }
 
-  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--orange-3 {
+  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--orange-3,
+  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(243, 156, 17)"],
+  .columba-content-wrap.main-content:has(> .filter-card) .list-card .contest-type-block .tag[style*="background-color: rgb(243, 156, 17)"] {
     background: var(--lct-orange-1) !important;
     border-color: var(--lct-orange-2) !important;
     color: var(--lct-orange-5) !important;
   }
 
-  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--gold-3 {
+  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--gold-3,
+  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(255, 193, 22)"],
+  .columba-content-wrap.main-content:has(> .filter-card) .list-card .contest-type-block .tag[style*="background-color: rgb(255, 193, 22)"] {
     background: var(--lct-yellow-1) !important;
     border-color: var(--lct-yellow-2) !important;
     color: var(--lct-yellow-5) !important;
   }
 
-  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--green-3 {
+  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--green-3,
+  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(83, 196, 26)"],
+  .columba-content-wrap.main-content:has(> .filter-card) .list-card .contest-type-block .tag[style*="background-color: rgb(34, 112, 10)"] {
     background: var(--lct-green-1) !important;
     border-color: var(--lct-green-2) !important;
     color: var(--lct-green-5) !important;
   }
 
-  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--cyan-3 {
+  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--cyan-3,
+  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(19, 194, 194)"] {
     background: var(--lct-cyan-1) !important;
     border-color: var(--lct-cyan-2) !important;
     color: var(--lct-cyan-5) !important;
   }
 
-  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--blue-3 {
+  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--blue-3,
+  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(52, 152, 219)"],
+  .columba-content-wrap.main-content:has(> .filter-card) .list-card .contest-type-block .tag[style*="background-color: rgb(52, 152, 219)"] {
     background: var(--lct-blue-1) !important;
     border-color: var(--lct-blue-2) !important;
     color: var(--lct-blue-5) !important;
   }
 
-  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--purple-3 {
+  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--purple-3,
+  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(156, 61, 207)"],
+  .columba-content-wrap.main-content:has(> .filter-card) .list-card .contest-type-block .tag[style*="background-color: rgb(156, 61, 207)"] {
     background: var(--lct-purple-1) !important;
     border-color: var(--lct-purple-2) !important;
     color: var(--lct-purple-5) !important;
   }
 
-  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--lapis-4 {
+  :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--lapis-4,
+  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(14, 29, 105)"],
+  .columba-content-wrap.main-content .l-card .tags span[style*="background-color: rgb(41, 73, 180)"] {
     background: var(--lct-lapis-1) !important;
     border-color: var(--lct-lapis-2) !important;
     color: var(--lct-lapis-5) !important;
+  }
+
+  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(232, 232, 232)"] {
+    background: var(--lct-surface-hover) !important;
+    border-color: var(--lct-border-strong) !important;
+    color: var(--lct-text-secondary) !important;
   }
 
   :is(#app, #app-old) .dropdown:has(> ul > li) li:is(:hover, :focus-visible, .selected, [aria-selected="true"]) {
@@ -1163,66 +1209,6 @@
     border-bottom: 0 !important;
   }
 
-  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(19, 194, 194)"] {
-    background: var(--lct-cyan-1) !important;
-    border-color: var(--lct-cyan-2) !important;
-    color: var(--lct-cyan-5) !important;
-  }
-
-  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(52, 152, 219)"] {
-    background: var(--lct-blue-1) !important;
-    border-color: var(--lct-blue-2) !important;
-    color: var(--lct-blue-5) !important;
-  }
-
-  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(254, 76, 97)"] {
-    background: var(--lct-red-1) !important;
-    border-color: var(--lct-red-2) !important;
-    color: var(--lct-red-5) !important;
-  }
-
-  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(243, 156, 17)"] {
-    background: var(--lct-orange-1) !important;
-    border-color: var(--lct-orange-2) !important;
-    color: var(--lct-orange-5) !important;
-  }
-
-  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(83, 196, 26)"] {
-    background: var(--lct-green-1) !important;
-    border-color: var(--lct-green-2) !important;
-    color: var(--lct-green-5) !important;
-  }
-
-  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(255, 193, 22)"] {
-    background: var(--lct-yellow-1) !important;
-    border-color: var(--lct-yellow-2) !important;
-    color: var(--lct-yellow-5) !important;
-  }
-
-  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(156, 61, 207)"] {
-    background: var(--lct-purple-1) !important;
-    border-color: var(--lct-purple-2) !important;
-    color: var(--lct-purple-5) !important;
-  }
-
-  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(14, 29, 105)"] {
-    background: var(--lct-lapis-1) !important;
-    border-color: var(--lct-lapis-2) !important;
-    color: var(--lct-lapis-5) !important;
-  }
-
-  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(232, 232, 232)"] {
-    background: var(--lct-surface-hover) !important;
-    border-color: var(--lct-border-strong) !important;
-    color: var(--lct-text-secondary) !important;
-  }
-
-  .columba-content-wrap.main-content .l-card .tags span[style*="background-color: rgb(41, 73, 180)"] {
-    background: var(--lct-lapis-1) !important;
-    border-color: var(--lct-lapis-2) !important;
-    color: var(--lct-lapis-5) !important;
-  }
-
   .columba-content-wrap.main-content .list-wrap .progress-frame {
     background: var(--lct-border) !important;
     border-color: var(--lct-border) !important;
@@ -1285,42 +1271,6 @@
 
   .columba-content-wrap.main-content:has(> .filter-card) .list-card :is(.wrapper, .contest-card, .title-row, .info-row, .left-status, .provider-display, .count, time) {
     color: var(--lct-text-secondary) !important;
-  }
-
-  .columba-content-wrap.main-content:has(> .filter-card) .list-card .contest-type-block .tag[style*="background-color: rgb(255, 193, 22)"] {
-    background: var(--lct-yellow-1) !important;
-    border-color: var(--lct-yellow-2) !important;
-    color: var(--lct-yellow-5) !important;
-  }
-
-  .columba-content-wrap.main-content:has(> .filter-card) .list-card .contest-type-block .tag[style*="background-color: rgb(156, 61, 207)"] {
-    background: var(--lct-purple-1) !important;
-    border-color: var(--lct-purple-2) !important;
-    color: var(--lct-purple-5) !important;
-  }
-
-  .columba-content-wrap.main-content:has(> .filter-card) .list-card .contest-type-block .tag[style*="background-color: rgb(243, 156, 17)"] {
-    background: var(--lct-orange-1) !important;
-    border-color: var(--lct-orange-2) !important;
-    color: var(--lct-orange-5) !important;
-  }
-
-  .columba-content-wrap.main-content:has(> .filter-card) .list-card .contest-type-block .tag[style*="background-color: rgb(231, 77, 60)"] {
-    background: var(--lct-red-1) !important;
-    border-color: var(--lct-red-2) !important;
-    color: var(--lct-red-5) !important;
-  }
-
-  .columba-content-wrap.main-content:has(> .filter-card) .list-card .contest-type-block .tag[style*="background-color: rgb(34, 112, 10)"] {
-    background: var(--lct-green-1) !important;
-    border-color: var(--lct-green-2) !important;
-    color: var(--lct-green-5) !important;
-  }
-
-  .columba-content-wrap.main-content:has(> .filter-card) .list-card .contest-type-block .tag[style*="background-color: rgb(52, 152, 219)"] {
-    background: var(--lct-blue-1) !important;
-    border-color: var(--lct-blue-2) !important;
-    color: var(--lct-blue-5) !important;
   }
 
   /* Record list page: the native result count and submission details keep

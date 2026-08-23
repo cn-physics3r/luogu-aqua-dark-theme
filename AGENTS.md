@@ -9,6 +9,7 @@
 - `luogu-aqua-dark.user.css`：唯一的主代码、样式入口和可分发文件。它由原 `test.css` 改名而来，后续工作以此文件为准。
 - `README.md`：安装方式、当前覆盖、设计约束和手动验证清单。
 - `AGENTS.md`：本项目的协作和维护约定。
+- `scripts/check-userstyle.ps1`：零依赖静态检查脚本，只用于维护，不参与 UserStyle 分发。
 
 不要重新维护第二份 CSS 入口，也不要为了拆分当前规模的 CSS 引入构建系统；通过清晰的区块和注释保持模块化。
 
@@ -29,7 +30,9 @@ UserStyle 元数据和作用域
   ↓
 表单、按钮、表格、代码块和旧版评论
   ↓
-语义状态、标签和 Highcharts
+语义状态与经验证的页面特例
+  ↓
+首页、Highcharts 和题单广场
 ```
 
 新增规则应遵循以下原则：
@@ -49,7 +52,8 @@ UserStyle 元数据和作用域
 
 ## 文档和版本
 
-- CSS 的 `@version` 使用三段式版本号；当前主代码版本为 `0.1.12`。
+- CSS 的 `@version` 使用三段式版本号；当前版本以 CSS 元数据为唯一来源，并由静态检查脚本核对 README。
+- `@namespace` 使用当前仓库标识 `github.com/cn-physics3r/luogu-aqua-dark-theme`；修改它会改变 Stylus 样式身份，后续不得仅为文字整理再次迁移。
 - 仅整理代码且不改变视觉行为时使用补丁版本；改变页面视觉行为时至少更新补丁版本并同步 README。
 - README 中的覆盖范围、设计约束和验证清单必须与 CSS 实际行为一致，不得继续描述已被替换的旧版专属规则。
 - 如果修改图片处理、页面布局或语义状态，必须同时检查 README 的设计约束和覆盖说明。
@@ -59,6 +63,7 @@ UserStyle 元数据和作用域
 每次修改后至少执行：
 
 ```powershell
+.\scripts\check-userstyle.ps1
 git diff --check
 git status --short --branch
 ```
