@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Aqua Dark
 @namespace      github.com/cn-physics3r/luogu-aqua-dark-theme
-@version        0.1.56
+@version        0.1.59
 @description    Restrained charcoal and aqua dark theme for Luogu.
 @author         Physics3r
 @homepageURL    https://github.com/cn-physics3r/luogu-aqua-dark-theme
@@ -581,6 +581,7 @@
   /* Verified semantic badges share one palette across dropdown, problem, and contest components. */
   :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--pink-3,
   .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(254, 76, 97)"],
+  .columba-content-wrap.main-content .l-card section .toggle-tag.selected[style*="background-color: rgb(254, 76, 97)"],
   .columba-content-wrap.main-content:has(> .filter-card) .list-card .contest-type-block .tag[style*="background-color: rgb(231, 77, 60)"] {
     background: var(--lct-red-1) !important;
     border-color: var(--lct-red-2) !important;
@@ -589,6 +590,7 @@
 
   :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--orange-3,
   .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(243, 156, 17)"],
+  .columba-content-wrap.main-content .l-card section .toggle-tag.selected[style*="background-color: rgb(243, 156, 17)"],
   .columba-content-wrap.main-content:has(> .filter-card) .list-card .contest-type-block .tag[style*="background-color: rgb(243, 156, 17)"] {
     background: var(--lct-orange-1) !important;
     border-color: var(--lct-orange-2) !important;
@@ -597,6 +599,7 @@
 
   :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--gold-3,
   .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(255, 193, 22)"],
+  .columba-content-wrap.main-content .l-card section .toggle-tag.selected[style*="background-color: rgb(255, 193, 22)"],
   .columba-content-wrap.main-content:has(> .filter-card) .list-card .contest-type-block .tag[style*="background-color: rgb(255, 193, 22)"] {
     background: var(--lct-yellow-1) !important;
     border-color: var(--lct-yellow-2) !important;
@@ -605,6 +608,7 @@
 
   :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--green-3,
   .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(83, 196, 26)"],
+  .columba-content-wrap.main-content .l-card section .toggle-tag.selected[style*="background-color: rgb(83, 196, 26)"],
   .columba-content-wrap.main-content:has(> .filter-card) .list-card .contest-type-block .tag[style*="background-color: rgb(34, 112, 10)"] {
     background: var(--lct-green-1) !important;
     border-color: var(--lct-green-2) !important;
@@ -612,7 +616,8 @@
   }
 
   :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--cyan-3,
-  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(19, 194, 194)"] {
+  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(19, 194, 194)"],
+  .columba-content-wrap.main-content .l-card section .toggle-tag.selected[style*="background-color: rgb(19, 194, 194)"] {
     background: var(--lct-cyan-1) !important;
     border-color: var(--lct-cyan-2) !important;
     color: var(--lct-cyan-5) !important;
@@ -620,6 +625,7 @@
 
   :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--blue-3,
   .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(52, 152, 219)"],
+  .columba-content-wrap.main-content .l-card section .toggle-tag.selected[style*="background-color: rgb(52, 152, 219)"],
   .columba-content-wrap.main-content:has(> .filter-card) .list-card .contest-type-block .tag[style*="background-color: rgb(52, 152, 219)"] {
     background: var(--lct-blue-1) !important;
     border-color: var(--lct-blue-2) !important;
@@ -628,6 +634,7 @@
 
   :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--purple-3,
   .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(156, 61, 207)"],
+  .columba-content-wrap.main-content .l-card section .toggle-tag.selected[style*="background-color: rgb(156, 61, 207)"],
   .columba-content-wrap.main-content:has(> .filter-card) .list-card .contest-type-block .tag[style*="background-color: rgb(156, 61, 207)"] {
     background: var(--lct-purple-1) !important;
     border-color: var(--lct-purple-2) !important;
@@ -636,13 +643,16 @@
 
   :is(#app, #app-old) .dropdown:has(> ul > li > span > span[class*="lcolor--"]) li > span > span.lcolor--lapis-4,
   .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(14, 29, 105)"],
-  .columba-content-wrap.main-content .l-card .tags span[style*="background-color: rgb(41, 73, 180)"] {
+  .columba-content-wrap.main-content .l-card .tags span[style*="background-color: rgb(41, 73, 180)"],
+  .columba-content-wrap.main-content .l-card section .toggle-tag.selected[style*="background-color: rgb(14, 29, 105)"],
+  .columba-content-wrap.main-content .l-card section .toggle-tag.selected[style*="background-color: rgb(41, 73, 180)"] {
     background: var(--lct-lapis-1) !important;
     border-color: var(--lct-lapis-2) !important;
     color: var(--lct-lapis-5) !important;
   }
 
-  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(232, 232, 232)"] {
+  .columba-content-wrap.main-content :is(.list-wrap, .l-card) :is(.tags, .difficulty) span[style*="background-color: rgb(232, 232, 232)"],
+  .columba-content-wrap.main-content .l-card section .toggle-tag.selected[style*="background-color: rgb(232, 232, 232)"] {
     background: var(--lct-surface-hover) !important;
     border-color: var(--lct-border-strong) !important;
     color: var(--lct-text-secondary) !important;
@@ -1178,6 +1188,39 @@
     background: var(--lct-control) !important;
     border-color: var(--lct-border-strong) !important;
     color: var(--lct-text) !important;
+  }
+
+  /* The selected difficulty value mirrors its badge foreground without filling the control. */
+  .columba-content-wrap.main-content .filter-tags .combo-wrapper .text .lcolor--pink-3 {
+    color: var(--lct-red-5) !important;
+  }
+
+  .columba-content-wrap.main-content .filter-tags .combo-wrapper .text .lcolor--orange-3 {
+    color: var(--lct-orange-5) !important;
+  }
+
+  .columba-content-wrap.main-content .filter-tags .combo-wrapper .text .lcolor--gold-3 {
+    color: var(--lct-yellow-5) !important;
+  }
+
+  .columba-content-wrap.main-content .filter-tags .combo-wrapper .text .lcolor--green-3 {
+    color: var(--lct-green-5) !important;
+  }
+
+  .columba-content-wrap.main-content .filter-tags .combo-wrapper .text .lcolor--cyan-3 {
+    color: var(--lct-cyan-5) !important;
+  }
+
+  .columba-content-wrap.main-content .filter-tags .combo-wrapper .text .lcolor--blue-3 {
+    color: var(--lct-blue-5) !important;
+  }
+
+  .columba-content-wrap.main-content .filter-tags .combo-wrapper .text .lcolor--purple-3 {
+    color: var(--lct-purple-5) !important;
+  }
+
+  .columba-content-wrap.main-content .filter-tags .combo-wrapper .text .lcolor--lapis-4 {
+    color: var(--lct-lapis-5) !important;
   }
 
   .columba-content-wrap.main-content .filter-section .placeholder,
