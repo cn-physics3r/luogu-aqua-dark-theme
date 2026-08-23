@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Aqua Dark
 @namespace      github.com/cn-physics3r/luogu-aqua-dark-theme
-@version        0.1.59
+@version        0.1.60
 @description    Restrained charcoal and aqua dark theme for Luogu.
 @author         Physics3r
 @homepageURL    https://github.com/cn-physics3r/luogu-aqua-dark-theme
@@ -346,6 +346,11 @@
   ):focus-visible {
     outline: 1px solid var(--lct-blue-2) !important;
     outline-offset: 2px !important;
+  }
+
+  /* Amaze UI applies its legacy focus outline after pointer clicks. */
+  :is(#app, #app-old) .am-btn:focus:not(:focus-visible) {
+    outline: none !important;
   }
 
   ::selection {
