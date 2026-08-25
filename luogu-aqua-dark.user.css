@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Luogu Aqua Dark
 @namespace      github.com/cn-physics3r/luogu-aqua-dark-theme
-@version        0.1.62
+@version        0.1.65
 @description    Restrained charcoal and aqua dark theme for Luogu.
 @author         Physics3r
 @homepageURL    https://github.com/cn-physics3r/luogu-aqua-dark-theme
@@ -72,6 +72,13 @@
     --lct-shadow-header: 0 2px 14px rgba(0, 0, 0, 0.28);
     --lct-shadow-float: 0 -3px 12px rgba(0, 0, 0, 0.24);
     --lct-highcharts-shadow: rgba(0, 0, 0, 0.34);
+    --lct-heat-empty: #343b44;
+    --lct-heat-border: #46515d;
+    --lct-heat-level-1: #294952;
+    --lct-heat-level-2: #2f6473;
+    --lct-heat-level-3: #357f91;
+    --lct-heat-level-4: #3d99ad;
+    --lct-heat-level-5: #4bb4c7;
     --lct-selection-background: rgba(99, 183, 217, 0.32);
     --lct-text-on-accent: #ffffff;
     --lct-text-on-bright-accent: var(--lct-header);
@@ -741,6 +748,41 @@
 
   main.lcolor-bg-background:has(.user-header-top) .heat-map-wrapper .lfe-caption {
     color: var(--lct-text-muted) !important;
+  }
+
+  main.lcolor-bg-background:has(.user-header-top) .heat-map-wrapper .heat-map-cell:not(.hidden) {
+    background-color: var(--lct-heat-empty) !important;
+    box-shadow: inset 0 0 0 1px var(--lct-heat-border) !important;
+  }
+
+  main.lcolor-bg-background:has(.user-header-top) .heat-map-wrapper .heat-map-cell[style*="rgb(255, 246, 186)"] {
+    background-color: var(--lct-heat-level-1) !important;
+  }
+
+  main.lcolor-bg-background:has(.user-header-top) .heat-map-wrapper .heat-map-cell[style*="rgb(255, 237, 145)"] {
+    background-color: var(--lct-heat-level-2) !important;
+  }
+
+  main.lcolor-bg-background:has(.user-header-top) .heat-map-wrapper .heat-map-cell[style*="rgb(255, 222, 140)"] {
+    background-color: var(--lct-heat-level-3) !important;
+  }
+
+  main.lcolor-bg-background:has(.user-header-top) .heat-map-wrapper .heat-map-cell[style*="rgb(255, 225, 105)"] {
+    background-color: var(--lct-heat-level-4) !important;
+  }
+
+  main.lcolor-bg-background:has(.user-header-top) .heat-map-wrapper .heat-map-cell[style*="rgb(255, 210, 64)"] {
+    background-color: var(--lct-heat-level-5) !important;
+  }
+
+  main.lcolor-bg-background:has(.user-header-top) .heat-map-wrapper .heat-map-cell[style*="rgb(217, 247, 190)"],
+  main.lcolor-bg-background:has(.user-header-top) .heat-map-wrapper .heat-map-cell[style*="rgb(247, 224, 255)"] {
+    background-color: var(--lct-heat-level-1) !important;
+  }
+
+  main.lcolor-bg-background:has(.user-header-top) .heat-map-wrapper .heat-map-cell[style*="rgb(183, 235, 143)"],
+  main.lcolor-bg-background:has(.user-header-top) .heat-map-wrapper .heat-map-cell[style*="rgb(231, 188, 245)"] {
+    background-color: var(--lct-heat-level-2) !important;
   }
 
   main.lcolor-bg-background:has(.user-header-top) .user-info .slogan {
